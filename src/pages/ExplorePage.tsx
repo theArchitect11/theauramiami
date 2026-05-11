@@ -219,7 +219,7 @@ const ExplorePage = () => {
               onClick={() => setSelectedLayer("all")}
               className={`relative min-h-[240px] w-[78vw] shrink-0 snap-start overflow-hidden border p-6 text-left transition-colors sm:w-[370px] ${
                 selectedLayer === "all"
-                  ? "border-primary bg-[linear-gradient(135deg,hsl(186_44%_14%),hsl(188_58%_8%))] text-white"
+                  ? "border-primary bg-[linear-gradient(135deg,hsl(220_10%_13%),hsl(220_14%_5%))] text-white"
                   : "border-primary/18 bg-card/85 hover:border-primary/45"
               }`}
             >

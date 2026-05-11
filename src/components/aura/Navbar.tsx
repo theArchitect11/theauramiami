@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 border-b border-primary/35 bg-[linear-gradient(135deg,rgba(7,47,54,0.76),rgba(4,30,36,0.62))] shadow-[0_18px_70px_-38px_hsl(var(--gold)/0.55)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 ${
+      className={`fixed left-0 right-0 top-0 z-50 border-b border-primary/35 bg-[linear-gradient(135deg,rgba(12,12,13,0.78),rgba(0,0,0,0.66))] shadow-[0_18px_70px_-38px_hsl(var(--gold)/0.45)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 ${
         scrolled ? "py-3" : "py-4 md:py-5"
       }`}
     >
@@ -137,7 +137,7 @@ const Navbar = () => {
       {mobileOpen && (
         <div
           id="mobile-navigation"
-          className="absolute left-0 right-0 top-full border-y border-primary/25 bg-[linear-gradient(135deg,rgba(7,47,54,0.82),rgba(4,30,36,0.72))] px-5 py-4 shadow-[0_28px_80px_-36px_hsl(var(--gold)/0.55)] backdrop-blur-2xl backdrop-saturate-150 lg:hidden"
+          className="absolute left-0 right-0 top-full border-y border-primary/25 bg-[linear-gradient(135deg,rgba(12,12,13,0.88),rgba(0,0,0,0.78))] px-5 py-4 shadow-[0_28px_80px_-36px_hsl(var(--gold)/0.45)] backdrop-blur-2xl backdrop-saturate-150 lg:hidden"
         >
           <div className="mx-auto flex max-w-md flex-col divide-y divide-primary/12 text-xs uppercase tracking-[0.18em] text-foreground/90">
             {[...primaryLinks, { label: "Contact", to: "/contact" }].map((item) => (

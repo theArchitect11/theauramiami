@@ -309,8 +309,8 @@ const HomeMagazine = () => {
   };
 
   return (
-    <div className="relative bg-[#f7f3ea] text-[#0b3e46]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#0b3e46]/18 to-transparent" />
+    <div className="relative bg-[#f7f3ea] text-[#111214]">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#111214]/18 to-transparent" />
 
       <section
         id="strategy"
@@ -342,28 +342,28 @@ const HomeMagazine = () => {
                       <p className="mb-2 text-[9px] uppercase tracking-[0.38em] text-[#b1842e]">
                         {slide.issue}
                       </p>
-                      <p className="mb-8 text-[10px] uppercase tracking-[0.26em] text-[#0b3e46]/45">
+                      <p className="mb-8 text-[10px] uppercase tracking-[0.26em] text-[#111214]/45">
                         {slide.kicker}
                       </p>
-                      <h2 className="serif max-w-xl text-5xl leading-[0.95] text-[#0b3e46] sm:text-6xl md:text-7xl">
+                      <h2 className="serif max-w-xl text-5xl leading-[0.95] text-[#111214] sm:text-6xl md:text-7xl">
                         {slide.title}
                       </h2>
-                      <p className="mt-7 max-w-lg text-base leading-8 text-[#0b3e46]/68 md:text-lg">
+                      <p className="mt-7 max-w-lg text-base leading-8 text-[#111214]/68 md:text-lg">
                         {slide.body}
                       </p>
-                      <p className="mt-10 text-[10px] uppercase leading-loose tracking-[0.24em] text-[#0b3e46]/45">
+                      <p className="mt-10 text-[10px] uppercase leading-loose tracking-[0.24em] text-[#111214]/45">
                         {slide.side}
                       </p>
                     </div>
 
-                    <figure className="relative min-h-[420px] overflow-hidden border border-[#0b3e46]/12 bg-[#0b3e46] lg:min-h-[520px]">
+                    <figure className="relative min-h-[420px] overflow-hidden border border-[#111214]/12 bg-[#111214] lg:min-h-[520px]">
                       <img
                         src={slide.image}
                         alt={`${slide.kicker} editorial visual`}
                         className="h-full min-h-[420px] w-full object-cover transition-transform duration-700 lg:min-h-[520px]"
                         loading={slideIndex === 0 ? "eager" : "lazy"}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0b3e46]/55 via-[#0b3e46]/10 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#111214]/55 via-[#111214]/10 to-transparent" />
                       <figcaption className="absolute inset-x-0 bottom-0 p-6 text-[10px] uppercase tracking-[0.26em] text-white/72">
                         {slide.caption}
                       </figcaption>
@@ -378,20 +378,20 @@ const HomeMagazine = () => {
           <div className="absolute inset-x-0 bottom-6 z-10 hidden px-5 sm:px-6 lg:block">
             <div className="container mx-auto">
               <nav
-                className="pointer-events-auto grid overflow-hidden border-y border-[#0b3e46]/15 bg-[#f7f3ea]/90 shadow-[0_18px_60px_-42px_rgba(11,62,70,0.45)] backdrop-blur md:grid-cols-4"
+                className="pointer-events-auto grid overflow-hidden border-y border-[#111214]/15 bg-[#f7f3ea]/90 shadow-[0_18px_60px_-42px_rgba(17,18,20,0.45)] backdrop-blur md:grid-cols-4"
                 aria-label="Homepage sections"
               >
                 {issueNav.map((item, index) => (
                   <a
                     key={item.href}
                     href={item.href}
-                    className="group flex min-h-[72px] items-center justify-between gap-4 border-r border-[#0b3e46]/12 px-5 py-4 transition-colors hover:bg-white last:border-r-0"
+                    className="group flex min-h-[72px] items-center justify-between gap-4 border-r border-[#111214]/12 px-5 py-4 transition-colors hover:bg-white last:border-r-0"
                   >
                     <span>
                       <span className="block text-[10px] uppercase tracking-[0.24em] text-[#b1842e]">
                         0{index + 1}
                       </span>
-                      <span className="mt-2 block text-[11px] uppercase tracking-[0.22em] text-[#0b3e46]/70">
+                      <span className="mt-2 block text-[11px] uppercase tracking-[0.22em] text-[#111214]/70">
                         {item.label}
                       </span>
                     </span>
@@ -410,7 +410,7 @@ const HomeMagazine = () => {
               type="button"
               onClick={() => goToSlide(activeSlide - 1)}
               disabled={activeSlide === 0}
-              className="pointer-events-auto inline-flex h-11 w-11 items-center justify-center border border-[#0b3e46]/20 bg-[#f7f3ea]/85 text-[#0b3e46] backdrop-blur transition-colors hover:border-[#b1842e] hover:text-[#b1842e] disabled:pointer-events-none disabled:opacity-25"
+              className="pointer-events-auto inline-flex h-11 w-11 items-center justify-center border border-[#111214]/20 bg-[#f7f3ea]/85 text-[#111214] backdrop-blur transition-colors hover:border-[#b1842e] hover:text-[#b1842e] disabled:pointer-events-none disabled:opacity-25"
               aria-label="Previous editorial slide"
             >
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
@@ -419,7 +419,7 @@ const HomeMagazine = () => {
               type="button"
               onClick={() => goToSlide(activeSlide + 1)}
               disabled={activeSlide === editorialSlides.length - 1}
-              className="pointer-events-auto inline-flex h-11 w-11 items-center justify-center border border-[#0b3e46]/20 bg-[#f7f3ea]/85 text-[#0b3e46] backdrop-blur transition-colors hover:border-[#b1842e] hover:text-[#b1842e] disabled:pointer-events-none disabled:opacity-25"
+              className="pointer-events-auto inline-flex h-11 w-11 items-center justify-center border border-[#111214]/20 bg-[#f7f3ea]/85 text-[#111214] backdrop-blur transition-colors hover:border-[#b1842e] hover:text-[#b1842e] disabled:pointer-events-none disabled:opacity-25"
               aria-label="Next editorial slide"
             >
               <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
@@ -427,14 +427,14 @@ const HomeMagazine = () => {
           </div>
 
           <div className="pointer-events-none absolute right-8 top-28 z-10 hidden lg:flex">
-            <div className="pointer-events-auto flex items-center gap-3 border border-[#0b3e46]/15 bg-[#f7f3ea]/85 px-4 py-3 backdrop-blur">
+            <div className="pointer-events-auto flex items-center gap-3 border border-[#111214]/15 bg-[#f7f3ea]/85 px-4 py-3 backdrop-blur">
               {editorialSlides.map((slide, index) => (
                 <button
                   key={slide.issue}
                   type="button"
                   onClick={() => goToSlide(index)}
                   className={`h-1.5 transition-all ${
-                    activeSlide === index ? "w-10 bg-[#b1842e]" : "w-5 bg-[#0b3e46]/25"
+                    activeSlide === index ? "w-10 bg-[#b1842e]" : "w-5 bg-[#111214]/25"
                   }`}
                   aria-label={`Go to editorial slide ${index + 1}`}
                 />
@@ -449,7 +449,7 @@ const HomeMagazine = () => {
                   key={slide.issue}
                   type="button"
                   onClick={() => goToSlide(index)}
-                  className="h-10 min-w-10 border border-[#0b3e46]/15 px-3 text-[10px] uppercase tracking-[0.18em] text-[#0b3e46]/65"
+                  className="h-10 min-w-10 border border-[#111214]/15 px-3 text-[10px] uppercase tracking-[0.18em] text-[#111214]/65"
                   aria-label={`Go to editorial slide ${index + 1}`}
                 >
                   0{index + 1}
@@ -458,20 +458,20 @@ const HomeMagazine = () => {
             </div>
 
             <nav
-              className="grid border-y border-[#0b3e46]/15 md:grid-cols-4"
+              className="grid border-y border-[#111214]/15 md:grid-cols-4"
               aria-label="Homepage sections"
             >
               {issueNav.map((item, index) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group flex min-h-16 items-center justify-between gap-4 border-b border-[#0b3e46]/15 px-4 py-4 transition-colors hover:bg-white md:border-b-0 md:border-r last:md:border-r-0"
+                  className="group flex min-h-16 items-center justify-between gap-4 border-b border-[#111214]/15 px-4 py-4 transition-colors hover:bg-white md:border-b-0 md:border-r last:md:border-r-0"
                 >
                   <span>
                     <span className="block text-[10px] uppercase tracking-[0.24em] text-[#b1842e]">
                       0{index + 1}
                     </span>
-                    <span className="mt-2 block text-[11px] uppercase tracking-[0.22em] text-[#0b3e46]/70">
+                    <span className="mt-2 block text-[11px] uppercase tracking-[0.22em] text-[#111214]/70">
                       {item.label}
                     </span>
                   </span>
@@ -493,33 +493,33 @@ const HomeMagazine = () => {
               <p className="mb-4 text-[10px] uppercase tracking-[0.32em] text-[#b1842e]">
                 Miami Evolution
               </p>
-              <h2 className="serif text-4xl leading-tight text-[#0b3e46] sm:text-5xl md:text-6xl">
+              <h2 className="serif text-4xl leading-tight text-[#111214] sm:text-5xl md:text-6xl">
                 Value follows infrastructure, scarcity, and culture.
               </h2>
             </div>
-            <p className="max-w-2xl text-sm leading-7 text-[#0b3e46]/68 md:justify-self-end md:text-base">
+            <p className="max-w-2xl text-sm leading-7 text-[#111214]/68 md:justify-self-end md:text-base">
               The homepage should explain why AURA exists before sending a
               visitor into neighborhoods. This section gives the buyer, renter,
               or seller a clear mental model for Miami.
             </p>
           </div>
 
-          <div className="grid border-y border-[#0b3e46]/15 lg:grid-cols-5">
+          <div className="grid border-y border-[#111214]/15 lg:grid-cols-5">
             {evolution.map((item, index) => (
               <article
                 key={item.label}
-                className="min-h-[270px] border-b border-[#0b3e46]/15 px-5 py-7 transition-colors hover:bg-white lg:border-b-0 lg:border-r last:lg:border-r-0"
+                className="min-h-[270px] border-b border-[#111214]/15 px-5 py-7 transition-colors hover:bg-white lg:border-b-0 lg:border-r last:lg:border-r-0"
               >
                 <div className="mb-10 flex items-center justify-between gap-4">
                   <span className="text-[10px] uppercase tracking-[0.26em] text-[#b1842e]">
                     {item.label}
                   </span>
-                  <span className="serif text-3xl text-[#0b3e46]/22">0{index + 1}</span>
+                  <span className="serif text-3xl text-[#111214]/22">0{index + 1}</span>
                 </div>
-                <h3 className="serif text-2xl leading-tight text-[#0b3e46]">
+                <h3 className="serif text-2xl leading-tight text-[#111214]">
                   {item.title}
                 </h3>
-                <p className="mt-5 text-sm leading-7 text-[#0b3e46]/64">
+                <p className="mt-5 text-sm leading-7 text-[#111214]/64">
                   {item.body}
                 </p>
               </article>
@@ -530,7 +530,7 @@ const HomeMagazine = () => {
 
       <section className="px-5 py-10 sm:px-6 md:py-16">
         <div className="container mx-auto">
-          <div className="grid overflow-hidden border border-[#0b3e46]/15 bg-white lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="grid overflow-hidden border border-[#111214]/15 bg-white lg:grid-cols-[1.08fr_0.92fr]">
             <figure className="relative min-h-[420px]">
               <img
                 src={skyline}
@@ -538,26 +538,26 @@ const HomeMagazine = () => {
                 className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0b3e46]/15 via-transparent to-[#0b3e46]/55" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#111214]/15 via-transparent to-[#111214]/55" />
             </figure>
             <div className="flex flex-col justify-between p-6 sm:p-8 md:p-12">
               <div>
                 <p className="mb-5 text-[10px] uppercase tracking-[0.32em] text-[#b1842e]">
                   Editorial Position
                 </p>
-                <h2 className="serif max-w-xl text-4xl leading-tight text-[#0b3e46] sm:text-5xl">
+                <h2 className="serif max-w-xl text-4xl leading-tight text-[#111214] sm:text-5xl">
                   A luxury search should feel calm before it feels fast.
                 </h2>
-                <p className="mt-6 max-w-xl text-sm leading-7 text-[#0b3e46]/68 md:text-base">
+                <p className="mt-6 max-w-xl text-sm leading-7 text-[#111214]/68 md:text-base">
                   The public portals show everything at once. AURA turns the
                   search into a sequence: understand the market layer, choose
                   the corridor, study the building, then move privately.
                 </p>
               </div>
-              <div className="mt-10 grid gap-px border border-[#0b3e46]/15 bg-[#0b3e46]/15 sm:grid-cols-3">
+              <div className="mt-10 grid gap-px border border-[#111214]/15 bg-[#111214]/15 sm:grid-cols-3">
                 {["No portal noise", "Building first", "Private context"].map((label) => (
                   <div key={label} className="bg-[#f7f3ea] px-4 py-4">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#0b3e46]/62">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#111214]/62">
                       {label}
                     </span>
                   </div>
@@ -616,17 +616,17 @@ const HomeMagazine = () => {
               <p className="mb-5 text-[10px] uppercase tracking-[0.32em] text-[#b1842e]">
                 North To South
               </p>
-              <h2 className="serif text-4xl leading-tight text-[#0b3e46] sm:text-5xl">
+              <h2 className="serif text-4xl leading-tight text-[#111214] sm:text-5xl">
                 The map belongs on its own page. The homepage only previews the logic.
               </h2>
-              <p className="mt-6 max-w-md text-sm leading-7 text-[#0b3e46]/65">
+              <p className="mt-6 max-w-md text-sm leading-7 text-[#111214]/65">
                 Each layer needs different advice. Oceanfront towers are not
                 estate pockets. Brickell is not Bal Harbour. Coconut Grove is
                 not Sunny Isles.
               </p>
               <Link
                 to={atlasPath}
-                className="group mt-8 inline-flex min-h-12 items-center gap-3 border border-[#b1842e] px-5 py-3 text-xs font-medium uppercase tracking-[0.2em] text-[#0b3e46] transition-colors hover:bg-[#0b3e46] hover:text-white"
+                className="group mt-8 inline-flex min-h-12 items-center gap-3 border border-[#b1842e] px-5 py-3 text-xs font-medium uppercase tracking-[0.2em] text-[#111214] transition-colors hover:bg-[#111214] hover:text-white"
               >
                 Open the atlas
                 <Compass
@@ -636,33 +636,33 @@ const HomeMagazine = () => {
               </Link>
             </aside>
 
-            <div className="divide-y divide-[#0b3e46]/15 border-y border-[#0b3e46]/15">
+            <div className="divide-y divide-[#111214]/15 border-y border-[#111214]/15">
               {marketLayers.map((layer, index) => (
                 <article
                   key={layer.label}
                   className="group grid gap-5 py-6 md:grid-cols-[170px_1fr_0.95fr] md:items-center md:gap-8"
                 >
-                  <figure className="relative h-44 overflow-hidden bg-[#0b3e46] md:h-32">
+                  <figure className="relative h-44 overflow-hidden bg-[#111214] md:h-32">
                     <img
                       src={layer.image}
                       alt={`${layer.label} Miami luxury area`}
                       className="h-full w-full object-cover grayscale-[18%] transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-[#0b3e46]/18 transition-opacity group-hover:opacity-0" />
+                    <div className="absolute inset-0 bg-[#111214]/18 transition-opacity group-hover:opacity-0" />
                   </figure>
                   <div>
                     <div className="mb-3 flex items-center gap-4">
-                      <span className="serif text-3xl text-[#0b3e46]/22">0{index + 1}</span>
+                      <span className="serif text-3xl text-[#111214]/22">0{index + 1}</span>
                       <span className="text-[10px] uppercase tracking-[0.28em] text-[#b1842e]">
                         {layer.label}
                       </span>
                     </div>
-                    <h3 className="serif text-3xl leading-tight text-[#0b3e46]">
+                    <h3 className="serif text-3xl leading-tight text-[#111214]">
                       {layer.title}
                     </h3>
                   </div>
-                  <p className="text-sm leading-7 text-[#0b3e46]/64">{layer.body}</p>
+                  <p className="text-sm leading-7 text-[#111214]/64">{layer.body}</p>
                 </article>
               ))}
             </div>
@@ -677,13 +677,13 @@ const HomeMagazine = () => {
               <p className="mb-5 text-[10px] uppercase tracking-[0.32em] text-[#b1842e]">
                 Choose The Path
               </p>
-              <h2 className="serif max-w-3xl text-4xl leading-tight text-[#0b3e46] sm:text-5xl md:text-6xl">
+              <h2 className="serif max-w-3xl text-4xl leading-tight text-[#111214] sm:text-5xl md:text-6xl">
                 One homepage. Three disciplined next moves.
               </h2>
             </div>
             <Link
               to={buildExplorePath(currentIntent)}
-              className="group inline-flex w-fit min-h-12 items-center gap-3 border border-[#0b3e46]/25 px-5 py-3 text-xs uppercase tracking-[0.2em] text-[#0b3e46] transition-colors hover:border-[#b1842e] hover:bg-white"
+              className="group inline-flex w-fit min-h-12 items-center gap-3 border border-[#111214]/25 px-5 py-3 text-xs uppercase tracking-[0.2em] text-[#111214] transition-colors hover:border-[#b1842e] hover:bg-white"
             >
               Explore inventory
               <ArrowRight
@@ -693,14 +693,14 @@ const HomeMagazine = () => {
             </Link>
           </div>
 
-          <div className="grid border-y border-[#0b3e46]/15 md:grid-cols-3">
+          <div className="grid border-y border-[#111214]/15 md:grid-cols-3">
             {paths.map((path) => {
               const Icon = path.icon;
               return (
                 <Link
                   key={path.label}
                   to={path.to}
-                  className="group flex min-h-[300px] flex-col justify-between border-b border-[#0b3e46]/15 px-6 py-7 transition-colors hover:bg-white md:border-b-0 md:border-r last:md:border-r-0"
+                  className="group flex min-h-[300px] flex-col justify-between border-b border-[#111214]/15 px-6 py-7 transition-colors hover:bg-white md:border-b-0 md:border-r last:md:border-r-0"
                 >
                   <div>
                     <div className="mb-9 flex items-center justify-between">
@@ -709,12 +709,12 @@ const HomeMagazine = () => {
                       </span>
                       <Icon className="h-6 w-6 text-[#b1842e]" strokeWidth={1.4} />
                     </div>
-                    <h3 className="serif text-3xl leading-tight text-[#0b3e46]">
+                    <h3 className="serif text-3xl leading-tight text-[#111214]">
                       {path.title}
                     </h3>
-                    <p className="mt-5 text-sm leading-7 text-[#0b3e46]/64">{path.body}</p>
+                    <p className="mt-5 text-sm leading-7 text-[#111214]/64">{path.body}</p>
                   </div>
-                  <span className="mt-10 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.24em] text-[#0b3e46]/70">
+                  <span className="mt-10 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.24em] text-[#111214]/70">
                     {path.cta}
                     <ArrowRight
                       className="h-4 w-4 text-[#b1842e] transition-transform group-hover:translate-x-1"
@@ -728,40 +728,40 @@ const HomeMagazine = () => {
         </div>
       </section>
 
-      <section className="border-y border-[#0b3e46]/10 bg-white/50 px-5 py-16 sm:px-6 md:py-24">
+      <section className="border-y border-[#111214]/10 bg-white/50 px-5 py-16 sm:px-6 md:py-24">
         <div className="container mx-auto">
           <div className="mb-10 grid gap-8 md:grid-cols-[0.82fr_1.18fr] md:items-end">
             <div>
               <p className="mb-5 text-[10px] uppercase tracking-[0.32em] text-[#b1842e]">
                 Why AURA
               </p>
-              <h2 className="serif text-4xl leading-tight text-[#0b3e46] sm:text-5xl md:text-6xl">
+              <h2 className="serif text-4xl leading-tight text-[#111214] sm:text-5xl md:text-6xl">
                 The luxury is not more listings. It is a clearer path.
               </h2>
             </div>
-            <p className="max-w-2xl text-sm leading-7 text-[#0b3e46]/68 md:justify-self-end md:text-base">
+            <p className="max-w-2xl text-sm leading-7 text-[#111214]/68 md:justify-self-end md:text-base">
               The final question before inquiry is simple: what happens next?
               This section makes the product promise explicit before a client
               sends personal information.
             </p>
           </div>
 
-          <div className="reveal grid border-y border-[#0b3e46]/15 md:grid-cols-4">
+          <div className="reveal grid border-y border-[#111214]/15 md:grid-cols-4">
             {trustLayer.map((item, index) => (
               <article
                 key={item.label}
-                className="border-b border-[#0b3e46]/15 px-5 py-7 transition-colors hover:bg-white md:border-b-0 md:border-r last:md:border-r-0"
+                className="border-b border-[#111214]/15 px-5 py-7 transition-colors hover:bg-white md:border-b-0 md:border-r last:md:border-r-0"
               >
                 <div className="mb-8 flex items-center justify-between gap-4">
                   <span className="text-[10px] uppercase tracking-[0.26em] text-[#b1842e]">
                     {item.label}
                   </span>
-                  <span className="serif text-3xl text-[#0b3e46]/22">0{index + 1}</span>
+                  <span className="serif text-3xl text-[#111214]/22">0{index + 1}</span>
                 </div>
-                <h3 className="serif text-2xl leading-tight text-[#0b3e46]">
+                <h3 className="serif text-2xl leading-tight text-[#111214]">
                   {item.title}
                 </h3>
-                <p className="mt-5 text-sm leading-7 text-[#0b3e46]/64">
+                <p className="mt-5 text-sm leading-7 text-[#111214]/64">
                   {item.body}
                 </p>
               </article>
@@ -793,7 +793,7 @@ const HomeMagazine = () => {
                 ].map((item) => {
                   const Icon = item.icon;
                   return (
-                    <div key={item.label} className="flex items-center gap-3 bg-[#0b3e46]/80 px-4 py-4 backdrop-blur">
+                    <div key={item.label} className="flex items-center gap-3 bg-[#111214]/80 px-4 py-4 backdrop-blur">
                       <Icon className="h-4 w-4 text-[#d8b56d]" strokeWidth={1.5} />
                       <span className="text-[10px] uppercase tracking-[0.2em] text-white/62">
                         {item.label}

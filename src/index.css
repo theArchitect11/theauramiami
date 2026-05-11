@@ -8,14 +8,14 @@
 
 @layer base {
   :root {
-    /* Deep glass teal — warmer and more alive than midnight blue */
-    --background: 186 48% 10%;
+    /* Neutral editorial black with warm gold accents */
+    --background: 220 10% 6%;
     --foreground: 40 30% 96%;
 
-    --card: 185 40% 14%;
+    --card: 220 10% 10%;
     --card-foreground: 40 30% 96%;
 
-    --popover: 185 40% 15%;
+    --popover: 220 10% 10%;
     --popover-foreground: 40 30% 96%;
 
     /* Warm gold primary */
@@ -23,10 +23,10 @@
     --primary-foreground: 220 50% 6%;
     --primary-glow: 44 90% 78%;
 
-    --secondary: 185 32% 19%;
+    --secondary: 220 8% 15%;
     --secondary-foreground: 40 30% 96%;
 
-    --muted: 185 28% 18%;
+    --muted: 220 7% 16%;
     --muted-foreground: 40 18% 78%;
 
     --accent: 41 70% 68%;
@@ -36,23 +36,23 @@
     --destructive-foreground: 40 30% 95%;
 
     --border: 41 30% 30%;
-    --input: 185 32% 18%;
+    --input: 220 8% 14%;
     --ring: 41 70% 68%;
 
     --radius: 0.25rem;
 
-    /* Brand tokens — dark turquoise green */
-    --midnight-deep: 188 56% 7%;
-    --midnight: 186 44% 13%;
+    /* Brand tokens — black, ivory, warm metal */
+    --midnight-deep: 220 14% 4%;
+    --midnight: 220 10% 8%;
     --gold: 41 70% 68%;
     --gold-soft: 41 55% 58%;
     --gold-glow: 44 90% 78%;
 
-    --gradient-hero: linear-gradient(180deg, hsl(var(--midnight-deep) / 0.18) 0%, hsl(var(--midnight) / 0.34) 62%, hsl(var(--midnight-deep) / 0.78) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(var(--midnight-deep) / 0.16) 0%, hsl(var(--midnight) / 0.28) 62%, hsl(var(--midnight-deep) / 0.82) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(var(--gold-glow)) 0%, hsl(var(--gold)) 50%, hsl(var(--gold-soft)) 100%);
     --gradient-panel:
-      linear-gradient(145deg, hsl(186 42% 17% / 0.88) 0%, hsl(188 56% 8% / 0.92) 72%),
-      radial-gradient(circle at 15% 0%, hsl(182 64% 34% / 0.28), transparent 42%),
+      linear-gradient(145deg, hsl(220 9% 13% / 0.88) 0%, hsl(220 14% 5% / 0.92) 72%),
+      radial-gradient(circle at 15% 0%, hsl(42 18% 90% / 0.12), transparent 42%),
       radial-gradient(circle at 90% 100%, hsl(var(--gold) / 0.12), transparent 40%);
 
     --shadow-gold: 0 0 60px -10px hsl(var(--gold) / 0.4);
@@ -62,7 +62,7 @@
   }
 
   .dark {
-    --background: 188 58% 7%;
+    --background: 220 14% 4%;
     --foreground: 40 30% 92%;
   }
 }
@@ -182,28 +182,28 @@
     background:
       linear-gradient(90deg, hsl(var(--gold) / 0.16) 0 1px, transparent 1px) 0 0 / 34px 34px,
       radial-gradient(circle at 12% 6%, hsl(var(--gold) / 0.16), transparent 32%),
-      radial-gradient(circle at 94% 18%, hsl(186 55% 30% / 0.15), transparent 30%),
+      radial-gradient(circle at 94% 18%, hsl(220 8% 12% / 0.11), transparent 30%),
       hsl(var(--background));
     color: hsl(var(--foreground));
   }
 
   .editorial-page > header,
   .editorial-page footer {
-    --background: 186 48% 10%;
+    --background: 220 10% 6%;
     --foreground: 40 30% 96%;
-    --card: 185 40% 14%;
+    --card: 220 10% 10%;
     --card-foreground: 40 30% 96%;
-    --secondary: 185 32% 19%;
-    --muted: 185 28% 18%;
+    --secondary: 220 8% 15%;
+    --muted: 220 7% 16%;
     --muted-foreground: 40 18% 78%;
-    --input: 185 32% 18%;
+    --input: 220 8% 14%;
   }
 
   .editorial-page .glass-panel {
     background:
       linear-gradient(135deg, hsl(42 46% 99% / 0.96), hsl(42 28% 92% / 0.9)),
       radial-gradient(circle at 12% 0%, hsl(var(--gold) / 0.18), transparent 42%),
-      radial-gradient(circle at 90% 100%, hsl(186 55% 28% / 0.12), transparent 36%);
+      radial-gradient(circle at 90% 100%, hsl(220 8% 12% / 0.1), transparent 36%);
     border: 1px solid hsl(var(--gold) / 0.38);
     box-shadow: 0 34px 82px -48px hsl(190 42% 12% / 0.62);
   }
@@ -259,14 +259,14 @@
 
   .editorial-intent-page {
     background:
-      radial-gradient(circle at 90% 10%, hsl(186 55% 28% / 0.13), transparent 28%),
+      radial-gradient(circle at 90% 10%, hsl(220 8% 12% / 0.1), transparent 28%),
       linear-gradient(90deg, hsl(var(--gold) / 0.16) 0 1px, transparent 1px) 0 0 / 40px 40px,
       linear-gradient(180deg, hsl(42 34% 95%), hsl(42 28% 92%));
   }
 
   .editorial-sell-page {
     background:
-      radial-gradient(circle at 86% 8%, hsl(186 56% 25% / 0.22), transparent 30%),
+      radial-gradient(circle at 86% 8%, hsl(220 8% 12% / 0.16), transparent 30%),
       radial-gradient(circle at 12% 22%, hsl(var(--gold) / 0.14), transparent 28%),
       linear-gradient(90deg, hsl(var(--gold) / 0.17) 0 1px, transparent 1px) 0 0 / 36px 36px,
       hsl(42 32% 94%);
@@ -274,7 +274,7 @@
 
   .editorial-explore-page {
     background:
-      radial-gradient(circle at 78% 8%, hsl(185 60% 28% / 0.18), transparent 30%),
+      radial-gradient(circle at 78% 8%, hsl(220 8% 12% / 0.12), transparent 30%),
       radial-gradient(circle at 10% 18%, hsl(var(--gold) / 0.16), transparent 28%),
       linear-gradient(90deg, hsl(190 32% 21% / 0.11) 0 1px, transparent 1px) 0 0 / 54px 54px,
       linear-gradient(180deg, hsl(42 36% 96%), hsl(42 28% 92%));
@@ -399,14 +399,14 @@
 
   /* Subtle suggested-chip — softer glow */
   .chip-soft {
-    background: hsl(186 38% 15% / 0.55);
+    background: hsl(220 8% 12% / 0.55);
     border: 1px solid hsl(var(--gold) / 0.18);
     backdrop-filter: blur(4px);
     transition: border-color 0.3s var(--transition-smooth), background-color 0.3s var(--transition-smooth), color 0.3s var(--transition-smooth);
   }
   .chip-soft:hover {
     border-color: hsl(var(--gold) / 0.45);
-    background: hsl(186 38% 18% / 0.75);
+    background: hsl(220 8% 14% / 0.75);
     color: hsl(var(--gold));
   }
 
