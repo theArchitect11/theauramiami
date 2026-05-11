@@ -97,6 +97,17 @@ const ExplorePage = () => {
     () => [...AREAS].sort((a, b) => (a.launchPriority ?? 99) - (b.launchPriority ?? 99)),
     [],
   );
+  const selectedLayerInfo = selectedLayer === "all"
+    ? undefined
+    : layerOptions.find((layer) => layer.title === selectedLayer);
+  const visibleAreaOptions = useMemo(() => {
+    if (selectedLayerInfo) {
+      return areaOptions.filter((area) => selectedLayerInfo.slugs.includes(area.slug));
+    }
+
+    return areaOptions.slice(0, 9);
+  }, [areaOptions, selectedLayerInfo]);
+  const intentLabel = intent === "lease" ? "Rent" : intent === "sell" ? "Sell" : "Buy";
 
   const filteredAreas = useMemo(() => {
     const q = normalize(query);
@@ -124,29 +135,56 @@ const ExplorePage = () => {
   }, [activeTag, query, selectedArea, selectedLayer]);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-background animate-fade-in">
+    <main className="editorial-page editorial-explore-page min-h-screen overflow-x-hidden bg-background animate-fade-in">
       <Navbar />
 
-      <section className="relative pt-32 md:pt-40 pb-14 md:pb-20 border-b border-primary/10 overflow-hidden">
-        <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-6">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 md:gap-14 items-end">
-            <div>
-              <p className="eyebrow mb-5 text-[10px] sm:text-xs">AURA Map Command</p>
-              <h1 className="serif text-4xl sm:text-5xl md:text-6xl leading-[1.02] mb-6">
-                First define the{" "}
-                <span className="italic text-primary">area.</span>
-              </h1>
-            </div>
-            <div className="max-w-[21rem] sm:max-w-2xl">
-              <p className="text-base font-light leading-relaxed text-foreground/75 md:text-lg">
-                Start with the right pocket, then align the path: buy, rent, or
-                sell. Every area follows a single, private signal flow.
+      <section className="relative overflow-hidden border-b border-primary/18 pt-32 pb-14 md:pt-40 md:pb-20">
+        <div className="absolute left-0 top-0 hidden h-full w-[12vw] border-r border-primary/15 bg-card/35 lg:block" />
+        <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6">
+          <div className="grid gap-10 lg:grid-cols-[0.22fr_0.78fr_0.52fr] lg:items-end">
+            <aside className="hidden h-full border-r border-primary/18 pr-7 lg:flex lg:flex-col lg:justify-between">
+              <p className="text-[10px] uppercase tracking-[0.32em] text-primary">
+                AURA / Explore
               </p>
+              <p className="max-w-[9rem] text-[11px] uppercase leading-loose tracking-[0.3em] text-muted-foreground">
+                Private Miami atlas. Edited by layer.
+              </p>
+            </aside>
+
+            <div>
+              <p className="eyebrow mb-5 text-[10px] sm:text-xs">Private Atlas</p>
+              <h1 className="serif max-w-4xl text-5xl leading-[0.96] sm:text-6xl md:text-7xl">
+                Define the layer before the address.
+              </h1>
+              <p className="mt-7 max-w-3xl text-base font-light leading-relaxed text-foreground/76 md:text-lg">
+                Start north-to-south, then narrow by intent, lifestyle, and
+                product type. The result is a cleaner Miami map before property
+                cards begin.
+              </p>
+            </div>
+
+            <div className="border border-primary/18 bg-card/75 p-6 shadow-[0_34px_82px_-62px_hsl(190_44%_14%/0.55)] md:p-7">
+              <div className="grid grid-cols-3 gap-px bg-primary/18">
+                {[
+                  { label: "Mode", value: intentLabel },
+                  { label: "Layer", value: selectedLayerInfo ? selectedLayerInfo.layer : "All Miami" },
+                  { label: "Visible", value: `${filteredAreas.length}` },
+                ].map((item) => (
+                  <div key={item.label} className="bg-card px-4 py-4">
+                    <p className="mb-2 text-[9px] uppercase tracking-[0.22em] text-primary/80">
+                      {item.label}
+                    </p>
+                    <p className="serif text-xl leading-tight text-foreground">
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
               <Link
                 to={`/geography?intent=${intent}#geography`}
                 className="mt-5 inline-flex w-fit items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-primary transition-colors hover:text-foreground"
               >
-                North to South Atlas
+                Open north-to-south atlas
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
               </Link>
             </div>
@@ -154,13 +192,13 @@ const ExplorePage = () => {
         </div>
       </section>
 
-      <section className="border-b border-primary/10 py-10 md:py-14">
-        <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
+      <section className="border-b border-primary/12 py-10 md:py-16">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-6">
           <div className="mb-7 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="eyebrow mb-3 text-[10px] sm:text-xs">Choose the Miami layer</p>
               <h2 className="serif text-3xl leading-tight md:text-5xl">
-                Start with geography before filters.
+                Six corridors, one cleaner map.
               </h2>
             </div>
             <button
@@ -169,30 +207,37 @@ const ExplorePage = () => {
                 setSelectedLayer("all");
                 setSelectedArea("all");
               }}
-              className="w-fit border border-primary/25 px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="w-fit border border-primary/35 bg-card/55 px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               Reset layers
             </button>
           </div>
 
-          <div className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 no-scrollbar sm:-mx-6 sm:px-6">
+          <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 no-scrollbar sm:-mx-6 sm:px-6">
             <button
               type="button"
               onClick={() => setSelectedLayer("all")}
-              className={`min-h-[190px] w-[78vw] shrink-0 snap-start border p-5 text-left transition-colors sm:w-[330px] ${
+              className={`relative min-h-[240px] w-[78vw] shrink-0 snap-start overflow-hidden border p-6 text-left transition-colors sm:w-[370px] ${
                 selectedLayer === "all"
-                  ? "border-primary bg-primary/12"
-                  : "border-primary/12 bg-card/45 hover:border-primary/45"
+                  ? "border-primary bg-[linear-gradient(135deg,hsl(186_44%_14%),hsl(188_58%_8%))] text-white"
+                  : "border-primary/18 bg-card/85 hover:border-primary/45"
               }`}
             >
-              <span className="text-[10px] uppercase tracking-[0.24em] text-primary">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,hsl(var(--gold)/0.18),transparent_34%)]" />
+              <span className="relative text-[10px] uppercase tracking-[0.24em] text-primary">
                 All Miami
               </span>
-              <span className="serif mt-5 block text-3xl leading-tight text-foreground">
+              <span className="serif relative mt-5 block text-4xl leading-tight">
                 Entire private map
               </span>
-              <span className="mt-5 block text-sm leading-relaxed text-muted-foreground">
+              <span className={`relative mt-5 block text-sm leading-relaxed ${
+                selectedLayer === "all" ? "text-white/72" : "text-muted-foreground"
+              }`}>
                 See every live AURA area before narrowing by lifestyle or intent.
+              </span>
+              <span className="relative mt-8 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-primary">
+                {AREAS.length} indexed areas
+                <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
               </span>
             </button>
 
@@ -207,7 +252,7 @@ const ExplorePage = () => {
                     setSelectedLayer(layer.title);
                     setSelectedArea("all");
                   }}
-                  className={`group relative min-h-[220px] w-[78vw] shrink-0 snap-start overflow-hidden border p-5 text-left transition-all duration-500 sm:w-[330px] ${
+                  className={`group relative min-h-[240px] w-[78vw] shrink-0 snap-start overflow-hidden border p-6 text-left transition-all duration-500 sm:w-[370px] ${
                     isActive
                       ? "border-primary"
                       : "border-primary/12 hover:border-primary/45"
@@ -219,23 +264,30 @@ const ExplorePage = () => {
                         src={img}
                         alt={layer.title}
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        style={{ filter: isActive ? "brightness(0.45) saturate(0.7)" : "brightness(0.3) saturate(0.5)" }}
+                        style={{ filter: isActive ? "brightness(0.58) saturate(0.92) contrast(1.08)" : "brightness(0.42) saturate(0.78) contrast(1.08)" }}
                         loading="lazy"
                       />
-                      <div className={`absolute inset-0 transition-opacity duration-500 ${isActive ? "bg-primary/20" : "bg-background/40"}`} />
+                      <div
+                        className="absolute inset-0 transition-opacity duration-500"
+                        style={{
+                          background: isActive
+                            ? "linear-gradient(135deg, rgba(5, 45, 52, 0.42), rgba(7, 24, 28, 0.62))"
+                            : "linear-gradient(135deg, rgba(5, 45, 52, 0.58), rgba(7, 24, 28, 0.72))",
+                        }}
+                      />
                     </>
                   )}
                   <div className="relative z-10">
-                    <span className="text-[10px] uppercase tracking-[0.24em] text-primary">
+                    <span className="text-[10px] uppercase tracking-[0.24em] text-primary-glow">
                       Layer {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="serif mt-5 block text-3xl leading-tight text-foreground">
+                    <span className="serif mt-5 block text-3xl leading-tight text-white">
                       {layer.title}
                     </span>
-                    <span className="mt-2 block text-[10px] uppercase tracking-[0.18em] text-foreground/55">
+                    <span className="mt-2 block text-[10px] uppercase tracking-[0.18em] text-white/58">
                       {layer.layer}
                     </span>
-                    <span className="mt-5 block text-sm leading-relaxed text-foreground/70">
+                    <span className="mt-5 block text-sm leading-relaxed text-white/78">
                       {layer.signal}
                     </span>
                   </div>
@@ -250,9 +302,9 @@ const ExplorePage = () => {
       </section>
 
       <section className="relative z-20 border-b border-primary/15 bg-background/94 backdrop-blur-md">
-        <div className="mx-auto w-full max-w-6xl px-5 py-4 sm:px-6">
-          <div className="grid gap-4">
-            <div className="flex min-w-0 flex-col gap-3 lg:grid lg:grid-cols-[auto_minmax(0,36rem)] lg:items-center lg:justify-between">
+        <div className="mx-auto w-full max-w-7xl px-5 py-5 sm:px-6">
+          <div className="grid gap-5 border border-primary/18 bg-card/72 p-4 shadow-[0_28px_72px_-58px_hsl(190_44%_14%/0.6)] md:p-5">
+            <div className="flex min-w-0 flex-col gap-4 lg:grid lg:grid-cols-[auto_minmax(0,38rem)] lg:items-center lg:justify-between">
               <div className="inline-grid w-fit max-w-full grid-cols-3 gap-1 rounded-full border border-primary/15 bg-background/45 p-1">
                 {intents.map((item) => (
                   <button
@@ -270,7 +322,7 @@ const ExplorePage = () => {
                 ))}
               </div>
 
-              <div className="flex min-w-0 w-full max-w-[36rem] items-center gap-3 rounded-full border border-primary/15 bg-input/55 px-4 py-2.5">
+              <div className="flex min-w-0 w-full max-w-[38rem] items-center gap-3 rounded-full border border-primary/25 bg-input/75 px-4 py-3 shadow-[inset_0_1px_0_hsl(var(--gold)/0.16)]">
                 <Search className="h-4 w-4 shrink-0 text-primary/80" strokeWidth={1.5} />
                 <input
                   value={query}
@@ -284,10 +336,10 @@ const ExplorePage = () => {
             <div>
               <div className="mb-2 flex items-center justify-between gap-4">
                 <span className="text-[10px] uppercase tracking-[0.24em] text-primary/80">
-                  Area first
+                  Quick area focus
                 </span>
                 <span className="hidden sm:inline text-[10px] uppercase tracking-[0.18em] text-muted-foreground/65">
-                  {filteredAreas.length} visible
+                  {selectedLayerInfo ? selectedLayerInfo.title : "Top priority areas"}
                 </span>
               </div>
               <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1 -mx-1 px-1">
@@ -302,7 +354,7 @@ const ExplorePage = () => {
                 >
                   All Areas
                 </button>
-                {areaOptions.map((area) => (
+                {visibleAreaOptions.map((area) => (
                   <button
                     key={area.slug}
                     type="button"
@@ -316,6 +368,14 @@ const ExplorePage = () => {
                     {area.name}
                   </button>
                 ))}
+                {selectedLayer === "all" && (
+                  <Link
+                    to={`/geography?intent=${intent}#geography`}
+                    className="whitespace-nowrap rounded-full border border-primary/20 px-3 py-2 text-[9px] uppercase tracking-[0.16em] text-primary transition-colors hover:border-primary/45 hover:bg-primary/10 sm:px-4 sm:text-[10px] sm:tracking-[0.18em]"
+                  >
+                    Full atlas
+                  </Link>
+                )}
               </div>
             </div>
 

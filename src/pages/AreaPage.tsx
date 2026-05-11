@@ -127,7 +127,7 @@ const AreaPage = () => {
 
   if (!area) {
     return (
-      <main className="min-h-screen bg-background animate-fade-in">
+      <main className="editorial-page editorial-area-page min-h-screen bg-background animate-fade-in">
         <Navbar />
         <section className="container mx-auto px-6 pt-40 pb-32 text-center">
           <p className="eyebrow mb-6">Not Found</p>
@@ -327,7 +327,7 @@ const AreaPage = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-area-page min-h-screen bg-background animate-fade-in">
       <Navbar />
 
       {/* Hero */}

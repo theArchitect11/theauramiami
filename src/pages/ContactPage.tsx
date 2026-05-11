@@ -45,7 +45,7 @@ const ContactPage = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-intent-page min-h-screen bg-background animate-fade-in">
       <Navbar />
 
       <section className="border-b border-primary/10 pt-32 pb-16 md:pt-40 md:pb-24">

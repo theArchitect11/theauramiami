@@ -223,7 +223,7 @@ const IntentPage = ({ mode }: IntentPageProps) => {
   const architectureCards = intentArchitecture[mode];
 
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className={`editorial-page ${mode === "sell" ? "editorial-sell-page" : "editorial-intent-page"} min-h-screen bg-background animate-fade-in`}>
       <Navbar />
 
       <section className="relative pt-32 md:pt-40 pb-14 md:pb-20 border-b border-primary/10 overflow-hidden">

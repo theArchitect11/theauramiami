@@ -157,6 +157,154 @@
     @apply uppercase text-xs tracking-[0.35em] text-primary/90 font-medium;
   }
 
+  /* Editorial white system used by interior product pages */
+  .editorial-page {
+    --background: 41 30% 94%;
+    --foreground: 197 46% 8%;
+    --card: 42 44% 97%;
+    --card-foreground: 197 46% 8%;
+    --popover: 42 44% 97%;
+    --popover-foreground: 197 46% 8%;
+    --primary: 39 64% 43%;
+    --primary-glow: 42 88% 63%;
+    --gold: 40 68% 52%;
+    --gold-soft: 37 56% 39%;
+    --gold-glow: 43 82% 66%;
+    --secondary: 41 25% 88%;
+    --secondary-foreground: 199 32% 11%;
+    --muted: 41 18% 88%;
+    --muted-foreground: 201 16% 34%;
+    --border: 39 29% 66%;
+    --input: 42 38% 96%;
+    --ring: 39 64% 43%;
+    position: relative;
+    isolation: isolate;
+    background:
+      linear-gradient(90deg, hsl(var(--gold) / 0.16) 0 1px, transparent 1px) 0 0 / 34px 34px,
+      radial-gradient(circle at 12% 6%, hsl(var(--gold) / 0.16), transparent 32%),
+      radial-gradient(circle at 94% 18%, hsl(186 55% 30% / 0.15), transparent 30%),
+      hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  .editorial-page > header,
+  .editorial-page footer {
+    --background: 186 48% 10%;
+    --foreground: 40 30% 96%;
+    --card: 185 40% 14%;
+    --card-foreground: 40 30% 96%;
+    --secondary: 185 32% 19%;
+    --muted: 185 28% 18%;
+    --muted-foreground: 40 18% 78%;
+    --input: 185 32% 18%;
+  }
+
+  .editorial-page .glass-panel {
+    background:
+      linear-gradient(135deg, hsl(42 46% 99% / 0.96), hsl(42 28% 92% / 0.9)),
+      radial-gradient(circle at 12% 0%, hsl(var(--gold) / 0.18), transparent 42%),
+      radial-gradient(circle at 90% 100%, hsl(186 55% 28% / 0.12), transparent 36%);
+    border: 1px solid hsl(var(--gold) / 0.38);
+    box-shadow: 0 34px 82px -48px hsl(190 42% 12% / 0.62);
+  }
+
+  .editorial-page section {
+    position: relative;
+  }
+
+  .editorial-page .eyebrow {
+    color: hsl(var(--gold-soft));
+  }
+
+  .editorial-page :is(
+    .bg-card,
+    .bg-card\/20,
+    .bg-card\/25,
+    .bg-card\/35,
+    .bg-card\/45,
+    .bg-card\/55,
+    .bg-card\/65,
+    .bg-card\/70
+  ) {
+    background-color: hsl(var(--card) / 0.9);
+  }
+
+  .editorial-page :is(
+    .border-primary\/10,
+    .border-primary\/12,
+    .border-primary\/14,
+    .border-primary\/15
+  ) {
+    border-color: hsl(var(--gold) / 0.24);
+  }
+
+  .editorial-page :is(.bg-background\/94, .bg-background\/80, .bg-background\/70, .bg-background\/65, .bg-background\/60, .bg-background\/55) {
+    background-color: hsl(var(--background) / 0.92);
+  }
+
+  .editorial-page :is(.shadow-gold, .hover\:shadow-gold:hover) {
+    box-shadow: 0 24px 62px -34px hsl(var(--gold) / 0.72);
+  }
+
+  .editorial-page [class*="grid"][class*="bg-primary/14"],
+  .editorial-page [class*="grid"][class*="bg-primary/15"],
+  .editorial-page [class*="grid"][class*="bg-primary/12"] {
+    box-shadow: 0 26px 70px -54px hsl(190 44% 14% / 0.5);
+  }
+
+  .editorial-page .editorial-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.42), transparent);
+  }
+
+  .editorial-intent-page {
+    background:
+      radial-gradient(circle at 90% 10%, hsl(186 55% 28% / 0.13), transparent 28%),
+      linear-gradient(90deg, hsl(var(--gold) / 0.16) 0 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(180deg, hsl(42 34% 95%), hsl(42 28% 92%));
+  }
+
+  .editorial-sell-page {
+    background:
+      radial-gradient(circle at 86% 8%, hsl(186 56% 25% / 0.22), transparent 30%),
+      radial-gradient(circle at 12% 22%, hsl(var(--gold) / 0.14), transparent 28%),
+      linear-gradient(90deg, hsl(var(--gold) / 0.17) 0 1px, transparent 1px) 0 0 / 36px 36px,
+      hsl(42 32% 94%);
+  }
+
+  .editorial-explore-page {
+    background:
+      radial-gradient(circle at 78% 8%, hsl(185 60% 28% / 0.18), transparent 30%),
+      radial-gradient(circle at 10% 18%, hsl(var(--gold) / 0.16), transparent 28%),
+      linear-gradient(90deg, hsl(190 32% 21% / 0.11) 0 1px, transparent 1px) 0 0 / 54px 54px,
+      linear-gradient(180deg, hsl(42 36% 96%), hsl(42 28% 92%));
+  }
+
+  .editorial-atlas-page {
+    background:
+      linear-gradient(90deg, transparent calc(50% - 1px), hsl(var(--gold) / 0.26) 50%, transparent calc(50% + 1px)),
+      hsl(42 34% 96%);
+  }
+
+  .editorial-area-page {
+    background:
+      linear-gradient(90deg, hsl(var(--gold) / 0.18) 0 1px, transparent 1px) 8% 0 / 1px 100% no-repeat,
+      radial-gradient(circle at 80% 12%, hsl(var(--gold) / 0.12), transparent 30%),
+      hsl(42 34% 96%);
+  }
+
+  .editorial-building-page {
+    background:
+      linear-gradient(90deg, hsl(197 20% 20% / 0.07) 0 1px, transparent 1px) 0 0 / 25% 100%,
+      hsl(42 34% 96%);
+  }
+
+  .editorial-journal-page {
+    background:
+      radial-gradient(circle at 8% 20%, hsl(var(--gold) / 0.12), transparent 28%),
+      linear-gradient(180deg, hsl(42 39% 97%), hsl(42 30% 94%));
+  }
+
   /* Architectural complex grid — fixed background layer */
   .arch-grid {
     position: fixed;
@@ -319,36 +467,6 @@
   }
   @media (prefers-reduced-motion: reduce) {
     body::after { display: none; }
-  }
-
-  /* Custom luxury cursor */
-  @media (pointer: fine) {
-    body, a, button, [role="button"] {
-      cursor: none;
-    }
-    .aura-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: hsl(var(--gold));
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-      will-change: transform;
-      mix-blend-mode: normal;
-      box-shadow: 0 0 10px hsl(var(--gold) / 0.55);
-    }
-    .aura-cursor.hovering {
-      width: 28px;
-      height: 28px;
-      background: hsl(var(--gold) / 0.25);
-      border: 1px solid hsl(var(--gold) / 0.7);
-      box-shadow: 0 0 20px hsl(var(--gold) / 0.35);
-    }
   }
 
   /* Page transition */

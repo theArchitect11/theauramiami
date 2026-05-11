@@ -5,7 +5,7 @@ import Footer from "@/components/aura/Footer";
 
 const TermsPage = () => {
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-journal-page min-h-screen bg-background animate-fade-in">
       <Navbar />
       <section className="pt-32 md:pt-40 pb-20 md:pb-28 border-b border-primary/10">
         <div className="container mx-auto px-5 sm:px-6">

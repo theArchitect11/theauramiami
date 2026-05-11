@@ -41,7 +41,7 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-journal-page min-h-screen bg-background animate-fade-in">
       <Navbar />
 
       <section className="relative overflow-hidden border-b border-primary/10 pt-32 pb-16 md:pt-40 md:pb-24">

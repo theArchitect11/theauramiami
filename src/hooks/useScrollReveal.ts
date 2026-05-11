@@ -21,7 +21,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLElement>(
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [options]);
 
   return ref;
 }

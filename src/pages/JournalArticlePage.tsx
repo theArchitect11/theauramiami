@@ -131,7 +131,7 @@ const JournalArticlePage = () => {
 
   if (!article) {
     return (
-      <main className="min-h-screen bg-background animate-fade-in">
+      <main className="editorial-page editorial-journal-page min-h-screen bg-background animate-fade-in">
         <Navbar />
         <section className="container mx-auto px-6 pt-40 pb-32 text-center">
           <p className="eyebrow mb-6">Journal</p>
@@ -152,7 +152,7 @@ const JournalArticlePage = () => {
   const related = JOURNAL_ARTICLES.filter((item) => item.slug !== article.slug).slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-journal-page min-h-screen bg-background animate-fade-in">
       <Navbar />
 
       <article>

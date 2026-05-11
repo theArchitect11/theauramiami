@@ -22,7 +22,7 @@ const GeographyPage = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-atlas-page min-h-screen bg-background animate-fade-in">
       <Navbar />
       <div className="pt-20">
         <GeographyAtlas />

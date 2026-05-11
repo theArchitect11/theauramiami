@@ -93,7 +93,7 @@ const BuildingPage = () => {
 
   if (!building) {
     return (
-      <main className="min-h-screen bg-background animate-fade-in">
+      <main className="editorial-page editorial-building-page min-h-screen bg-background animate-fade-in">
         <Navbar />
         <section className="container mx-auto px-6 pt-40 pb-32 text-center">
           <p className="eyebrow mb-6">Not Found</p>
@@ -183,7 +183,7 @@ const BuildingPage = () => {
     : [];
 
   return (
-    <main className="min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-building-page min-h-screen bg-background animate-fade-in">
       <Navbar />
 
       {/* Hero */}

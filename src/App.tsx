@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
-import AuraCursor from "./components/aura/AuraCursor.tsx";
 import RevealObserver from "./components/aura/RevealObserver.tsx";
 
 const queryClient = new QueryClient();
@@ -52,7 +51,6 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <AuraCursor />
         <RevealObserver />
         <ScrollToTop />
         <AnimatedRoutes />
