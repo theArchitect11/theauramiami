@@ -337,38 +337,34 @@ const HomeMagazine = () => {
                 className="min-h-[100svh] w-screen shrink-0 snap-start px-5 py-16 sm:px-6 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:pb-36 lg:pt-24"
               >
                 <div className="container mx-auto">
-                  <div className="grid gap-10 lg:grid-cols-[0.55fr_1.25fr_0.85fr] lg:gap-14">
-                    <aside className="border-y border-[#0b3e46]/15 py-5 lg:border-y-0 lg:border-r lg:pr-8">
-                      <p className="text-[10px] uppercase tracking-[0.34em] text-[#b1842e]">
+                  <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16 xl:gap-20">
+                    <div>
+                      <p className="mb-2 text-[9px] uppercase tracking-[0.38em] text-[#b1842e]">
                         {slide.issue}
                       </p>
-                      <div className="mt-8 hidden h-px w-full bg-[#0b3e46]/15 lg:block" />
-                      <p className="mt-8 max-w-xs text-xs uppercase leading-loose tracking-[0.22em] text-[#0b3e46]/55">
-                        {slide.side}
-                      </p>
-                    </aside>
-
-                    <div>
-                      <p className="mb-5 text-[10px] uppercase tracking-[0.32em] text-[#b1842e]">
+                      <p className="mb-8 text-[10px] uppercase tracking-[0.26em] text-[#0b3e46]/45">
                         {slide.kicker}
                       </p>
-                      <h2 className="serif max-w-4xl text-5xl leading-[0.95] text-[#0b3e46] sm:text-6xl md:text-7xl xl:text-8xl">
+                      <h2 className="serif max-w-xl text-5xl leading-[0.95] text-[#0b3e46] sm:text-6xl md:text-7xl">
                         {slide.title}
                       </h2>
-                      <p className="mt-7 max-w-2xl text-base leading-8 text-[#0b3e46]/70 md:text-lg">
+                      <p className="mt-7 max-w-lg text-base leading-8 text-[#0b3e46]/68 md:text-lg">
                         {slide.body}
+                      </p>
+                      <p className="mt-10 text-[10px] uppercase leading-loose tracking-[0.24em] text-[#0b3e46]/45">
+                        {slide.side}
                       </p>
                     </div>
 
-                    <figure className="relative min-h-[340px] overflow-hidden border border-[#0b3e46]/15 bg-[#0b3e46] lg:min-h-[380px]">
+                    <figure className="relative min-h-[420px] overflow-hidden border border-[#0b3e46]/12 bg-[#0b3e46] lg:min-h-[520px]">
                       <img
                         src={slide.image}
                         alt={`${slide.kicker} editorial visual`}
-                        className="h-full min-h-[340px] w-full object-cover lg:min-h-[380px]"
+                        className="h-full min-h-[420px] w-full object-cover transition-transform duration-700 lg:min-h-[520px]"
                         loading={slideIndex === 0 ? "eager" : "lazy"}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0b3e46]/45 via-transparent to-transparent" />
-                      <figcaption className="absolute inset-x-0 bottom-0 p-5 text-[10px] uppercase tracking-[0.24em] text-white/78">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0b3e46]/55 via-[#0b3e46]/10 to-transparent" />
+                      <figcaption className="absolute inset-x-0 bottom-0 p-6 text-[10px] uppercase tracking-[0.26em] text-white/72">
                         {slide.caption}
                       </figcaption>
                     </figure>

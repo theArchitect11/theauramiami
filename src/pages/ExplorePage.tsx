@@ -409,43 +409,34 @@ const ExplorePage = () => {
 
       <section id="areas" className="py-14 md:py-20">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
+          {filteredAreas.length === 0 && (
+            <p className="py-16 text-center text-sm text-muted-foreground">
+              No areas match your filters.
+            </p>
+          )}
           {groups.map((group) => {
-            const groupAreas = filteredAreas.filter(
-              (area) => area.regionGroup === group,
-            );
+            const groupAreas = filteredAreas.filter((area) => area.regionGroup === group);
             if (groupAreas.length === 0) return null;
-
             return (
-              <div key={group} className="mb-14 last:mb-0">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7">
-                  <div>
-                    <p className="eyebrow mb-3 text-[10px] sm:text-xs">{group}</p>
-                    <h2 className="serif text-2xl md:text-4xl leading-tight">
-                      {groupAreas.length} curated {groupAreas.length === 1 ? "area" : "areas"}
-                    </h2>
-                  </div>
-                  <p className="text-xs text-muted-foreground/70 italic max-w-sm">
-                    Oceanfront, bayfront, and branded signals refine the area story.
-                  </p>
+              <div key={group} className="mb-12 last:mb-0">
+                <div className="mb-5 flex items-center gap-4">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-primary/70">{group}</span>
+                  <span className="h-px flex-1 bg-primary/12" />
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-foreground/40">{groupAreas.length}</span>
                 </div>
-
-                <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 px-5 no-scrollbar">
-                  {groupAreas.map((area, areaIndex) => (
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {groupAreas.map((area) => (
                     <Link
                       key={area.slug}
                       to={`/area/${area.slug}?intent=${intent}`}
-                      className={`group relative shrink-0 overflow-hidden border border-primary/12 bg-card/65 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/45 ${
-                        areaIndex === 0
-                          ? "w-[84vw] sm:w-[540px]"
-                          : "w-[80vw] sm:w-[360px]"
-                      }`}
+                      className="group overflow-hidden border border-primary/12 bg-card/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-[0_12px_40px_-20px_hsl(var(--gold)/0.25)]"
                     >
-                      <AreaImage area={area} className="aspect-[16/9]">
-                        <div className="absolute left-5 top-5 flex flex-wrap gap-2">
-                          {(area.lifestyleTags ?? []).slice(0, 3).map((tag) => (
+                      <AreaImage area={area} className="aspect-[4/3]">
+                        <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
+                          {(area.lifestyleTags ?? []).slice(0, 2).map((tag) => (
                             <span
                               key={tag}
-                              className="rounded-full border border-primary/25 bg-background/60 px-3 py-1 text-[9px] uppercase tracking-[0.18em] text-primary backdrop-blur"
+                              className="rounded-full border border-primary/25 bg-background/65 px-2.5 py-0.5 text-[9px] uppercase tracking-[0.16em] text-primary backdrop-blur"
                             >
                               {tag}
                             </span>
@@ -453,27 +444,27 @@ const ExplorePage = () => {
                         </div>
                       </AreaImage>
                       <div className="p-5">
-                        <div className="flex items-start justify-between gap-4 mb-3">
+                        <div className="flex items-start justify-between gap-3 mb-3">
                           <div>
-                            <h3 className="serif text-2xl leading-tight group-hover:text-primary transition-colors">
+                            <h3 className="serif text-xl leading-tight group-hover:text-primary transition-colors">
                               {area.name}
                             </h3>
-                            <p className="text-[10px] uppercase tracking-[0.22em] text-foreground/55 mt-2">
+                            <p className="text-[9px] uppercase tracking-[0.2em] text-foreground/50 mt-1.5">
                               {area.areaType}
                             </p>
                           </div>
-                          <span className="rounded-full border border-primary/25 bg-primary/8 px-2.5 py-1 text-[9px] uppercase tracking-[0.18em] text-primary/85">
-                            {area.buildings.length} buildings
+                          <span className="shrink-0 rounded-full border border-primary/22 bg-primary/7 px-2 py-0.5 text-[9px] uppercase tracking-[0.16em] text-primary/80">
+                            {area.buildings.length} bldgs
                           </span>
                         </div>
-                        <p className="text-sm leading-relaxed text-muted-foreground mb-5">
+                        <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2 mb-4">
                           {area.shortDescription}
                         </p>
-                        <div className="flex items-center justify-between border-t border-primary/10 pt-4">
-                          <span className="text-[10px] uppercase tracking-[0.22em] text-foreground/60">
-                            {intent === "lease" ? "Rent mode" : intent === "sell" ? "Sell mode" : "Buy mode"}
+                        <div className="flex items-center justify-between border-t border-primary/10 pt-3">
+                          <span className="text-[9px] uppercase tracking-[0.2em] text-foreground/55">
+                            {intent === "lease" ? "Rent" : intent === "sell" ? "Sell" : "Buy"}
                           </span>
-                          <ArrowRight className="h-4 w-4 text-primary/75 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+                          <ArrowRight className="h-3.5 w-3.5 text-primary/70 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
                         </div>
                       </div>
                     </Link>

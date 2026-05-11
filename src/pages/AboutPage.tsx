@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, BadgeCheck, Building2, Compass, ShieldCheck, UserRound } from "lucide-react";
+import { ArrowRight, BadgeCheck, Building2, Compass, ShieldCheck, UserRound } from "lucide-react"; // UserRound used in philosophy grid
 import Navbar from "@/components/aura/Navbar";
 import Footer from "@/components/aura/Footer";
 import { buildConsultationPath } from "@/lib/intent";
@@ -99,17 +99,25 @@ const AboutPage = () => {
                 Founder-led standards, not portal behavior.
               </h2>
               <div className="relative min-h-[380px] overflow-hidden border border-primary/14 bg-[linear-gradient(135deg,rgba(8,62,70,0.88),rgba(3,28,34,0.96))]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_15%,hsl(var(--gold)/0.22),transparent_34%),radial-gradient(circle_at_80%_72%,rgba(52,211,220,0.12),transparent_34%)]" />
-                <div className="relative flex h-full min-h-[380px] flex-col items-center justify-center gap-5 p-7">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-full border border-primary/30 bg-primary/10">
-                    <UserRound className="h-12 w-12 text-primary/70" strokeWidth={1.2} />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-[10px] uppercase tracking-[0.26em] text-primary">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,hsl(var(--gold)/0.18),transparent_40%),radial-gradient(circle_at_85%_85%,hsl(182_64%_34%/0.14),transparent_38%)]" />
+                <div className="relative flex h-full min-h-[380px] flex-col justify-between p-8 md:p-10">
+                  <div>
+                    <p className="text-[9px] uppercase tracking-[0.4em] text-primary/70">
                       The Aura Miami
                     </p>
-                    <p className="mt-2 text-sm font-light leading-relaxed text-foreground/55">
-                      Miami and South Florida
+                    <p className="mt-1 text-[9px] uppercase tracking-[0.28em] text-foreground/38">
+                      Miami &amp; South Florida
+                    </p>
+                  </div>
+                  <div>
+                    <p className="serif text-2xl leading-snug text-foreground/88 md:text-3xl">
+                      "The luxury is not more listings.
+                      <br />
+                      It is a clearer path."
+                    </p>
+                    <div className="mt-8 h-px w-12 bg-primary/40" />
+                    <p className="mt-5 text-[10px] uppercase tracking-[0.28em] text-primary/60">
+                      Founder statement
                     </p>
                   </div>
                 </div>

@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/aura/Navbar";
 import Footer from "@/components/aura/Footer";
-import ConciergeSearchBar from "@/components/aura/ConciergeSearchBar";
 import AreaImage from "@/components/aura/AreaImage";
 import { AREAS } from "@/data/areas";
 import { BUILDINGS, formatPrice, type Building, type Listing } from "@/data/buildings";
@@ -316,8 +315,6 @@ const IntentPage = ({ mode }: IntentPageProps) => {
           </div>
         </div>
       </section>
-
-      <ConciergeSearchBar placement="inline" />
 
       {mode === "sell" ? (
         <section className="py-16 md:py-24">
