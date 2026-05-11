@@ -1,0 +1,563 @@
+import edgewater from "@/assets/areas/edgewater.jpg";
+import designDistrict from "@/assets/areas/design-district.jpg";
+import midtown from "@/assets/areas/midtown.jpg";
+import brickell from "@/assets/areas/brickell.jpg";
+import southOfFifth from "@/assets/areas/south-of-fifth.jpg";
+import surfside from "@/assets/areas/surfside.jpg";
+import downtownMiami from "@/assets/areas/downtown-miami.jpg";
+import coconutGrove from "@/assets/areas/coconut-grove.jpg";
+import sunnyIsles from "@/assets/areas/sunny-isles.jpg";
+import sunnyIslesAerial from "@/assets/areas/sunny-isles-aerial.jpg";
+import balHarbour from "@/assets/areas/bal-harbour.jpg";
+import balHarbourAerial from "@/assets/areas/bal-harbour-aerial.jpg";
+import aventuraImg from "@/assets/areas/aventura.jpg";
+import brickellKey from "@/assets/areas/brickell-key.jpg";
+import keyBiscayne from "@/assets/areas/key-biscayne.jpg";
+import indianCreek from "@/assets/areas/indian-creek.jpg";
+import coralGables from "@/assets/areas/coral-gables.jpg";
+
+export type Area = {
+  slug: string;
+  name: string;
+  aliases?: string[];
+  regionGroup?: string;
+  areaType?: string;
+  propertyType?: "condo" | "estate" | "mixed";
+  lifestyleTags?: string[];
+  launchPriority?: number;
+  tagline: string;
+  shortDescription: string;
+  overview: string;
+  image: string;
+  imagePosition?: string;
+  cardImage?: string;
+  cardImagePosition?: string;
+  portraitImage?: string;
+  portraitImagePosition?: string;
+  visualTone?:
+    | "coastal"
+    | "urban"
+    | "retail"
+    | "garden"
+    | "estate"
+    | "island"
+    | "resort";
+  buildings: string[];
+  signature: string;
+};
+
+export const AREAS: Area[] = [
+  {
+    slug: "sunny-isles",
+    name: "Sunny Isles",
+    aliases: ["Sunny Island", "Sunny Isles Beach", "Collins Ave Sunny Isles"],
+    regionGroup: "North Ocean Corridor",
+    areaType: "Branded oceanfront",
+    propertyType: "condo",
+    lifestyleTags: ["Oceanfront", "Branded", "Investor", "International"],
+    launchPriority: 1,
+    tagline: "The new oceanfront skyline.",
+    shortDescription:
+      "Branded oceanfront towers north of Bal Harbour, popular with international buyers.",
+    overview:
+      "Sunny Isles Beach has emerged as South Florida's branded oceanfront capital. Porsche Design Tower, Armani Casa, Bentley, Estates at Acqualina and Trump Towers line a two-mile stretch of Atlantic shoreline — a global magnet for international and Latin American capital.",
+    image: sunnyIslesAerial,
+    imagePosition: "center 50%",
+    portraitImage: sunnyIsles,
+    portraitImagePosition: "center 48%",
+    visualTone: "coastal",
+    signature: "Branded Oceanfront Towers",
+    buildings: [
+      "Acqualina Residences",
+      "Mansions at Acqualina",
+      "Estates at Acqualina",
+      "Porsche Design Tower",
+      "Armani/Casa Residences",
+      "Ritz-Carlton Residences Sunny Isles",
+      "Jade Signature",
+      "Jade Ocean",
+      "Jade Beach",
+      "Muse Residences",
+      "Turnberry Ocean Club",
+      "Turnberry Ocean Colony",
+      "Regalia",
+      "Bentley Residences",
+      "Chateau Beach Residences",
+      "Ocean One",
+      "Ocean Two",
+      "Ocean Three",
+      "Ocean Four",
+      "Millennium",
+      "Pinnacle",
+      "Trump Palace",
+      "Trump Royale",
+      "Trump Towers I",
+      "Trump Towers II",
+      "Trump Towers III",
+      "La Perla",
+      "Sole on the Ocean",
+      "Ocean Reserve",
+      "400 Sunny Isles",
+      "Parque Towers",
+    ],
+  },
+  {
+    slug: "bal-harbour",
+    name: "Bal Harbour",
+    aliases: ["Bal Harbor", "Bal Harbour Shops", "Collins Bal Harbour"],
+    regionGroup: "North Ocean Corridor",
+    areaType: "Quiet oceanfront luxury",
+    propertyType: "condo",
+    lifestyleTags: ["Oceanfront", "Quiet Luxury", "Branded", "Retail"],
+    launchPriority: 2,
+    tagline: "Discreet, refined, oceanfront.",
+    shortDescription:
+      "A small, gated village known for the Bal Harbour Shops and quiet beachfront living.",
+    overview:
+      "Bal Harbour is a 96-acre, gated village at the northern tip of Miami Beach. Home to the Bal Harbour Shops and a tightly held collection of oceanfront residences, it is known for privacy, beach-club service, and one of the lowest density-to-coastline ratios in South Florida.",
+    image: balHarbourAerial,
+    imagePosition: "center 46%",
+    cardImage: balHarbour,
+    cardImagePosition: "center 56%",
+    portraitImage: balHarbour,
+    portraitImagePosition: "center 54%",
+    visualTone: "coastal",
+    signature: "Gated Oceanfront Village",
+    buildings: [
+      "St. Regis Bal Harbour",
+      "Oceana Bal Harbour",
+      "Majestic Tower",
+      "Bal Harbour Tower",
+      "One Bal Harbour",
+      "The Palace Bal Harbour",
+      "Bellini Bal Harbour",
+      "Kenilworth",
+      "Bal Harbour 101",
+      "Carlton Terrace",
+      "Tiffany of Bal Harbour",
+      "Harbour House",
+    ],
+  },
+  {
+    slug: "bay-harbor-islands",
+    name: "Bay Harbor Islands",
+    aliases: ["Bay Harbor", "BHI", "Kane Concourse"],
+    regionGroup: "North Ocean Corridor",
+    areaType: "Boutique residential islands",
+    propertyType: "condo",
+    lifestyleTags: ["Boutique", "Quiet Luxury", "Family", "Walkable"],
+    launchPriority: 10,
+    tagline: "Boutique living on the islands.",
+    shortDescription:
+      "Two islands west of Bal Harbour offering mid-rise luxury and a quieter neighborhood feel.",
+    overview:
+      "Bay Harbor Islands consist of two separate islands: the north island is purely residential, while the south island features a mix of boutique residences and a walkable retail corridor on Kane Concourse. It is a preferred location for buyers seeking lower-density, modern boutique buildings.",
+    image: balHarbourAerial,
+    imagePosition: "center 48%",
+    cardImage: balHarbourAerial,
+    cardImagePosition: "center 46%",
+    portraitImage: balHarbour,
+    portraitImagePosition: "center 56%",
+    visualTone: "island",
+    signature: "Boutique Island Residences",
+    buildings: [
+      "The Well Bay Harbor",
+      "Onda Residences",
+      "Ambienta",
+      "Origin",
+      "La Baia",
+      "Indian Creek Residences",
+      "Grand Bay Bay Harbor",
+      "The Bijou",
+      "The Riva",
+      "Sereno",
+      "The Palm",
+    ],
+  },
+  {
+    slug: "surfside",
+    name: "Surfside",
+    aliases: ["Town of Surfside", "Collins Surfside"],
+    regionGroup: "North Beach Corridor",
+    areaType: "Luxury beachfront town",
+    propertyType: "condo",
+    lifestyleTags: ["Oceanfront", "Quiet Luxury", "Historic", "Walkable"],
+    launchPriority: 5,
+    tagline: "The oceanfront town that stayed a town.",
+    shortDescription:
+      "A peaceful oceanfront village home to the Four Seasons Surf Club and pristine beaches.",
+    overview:
+      "Surfside is an oceanfront town with a strict low-rise height limit, preserving a residential scale that is rare in Miami. The neighborhood is anchored by the historic Surf Club (now Four Seasons) and features a walkable main street with local retail and dining.",
+    image: surfside,
+    imagePosition: "center 54%",
+    portraitImagePosition: "center 50%",
+    visualTone: "coastal",
+    signature: "Oceanfront Town Residences",
+    buildings: [
+      "The Surf Club Four Seasons",
+      "Arte Surfside",
+      "Fendi Chateau",
+      "Eighty Seven Park",
+      "The Waves",
+      "Spiaggia",
+      "Azure",
+      "Solimar",
+      "Champlain Towers",
+    ],
+  },
+  {
+    slug: "aventura",
+    name: "Aventura",
+    aliases: ["City of Aventura", "Aventura Mall", "Country Club Drive"],
+    regionGroup: "North Corridor",
+    areaType: "Inland and bayfront community",
+    propertyType: "condo",
+    lifestyleTags: ["Family", "Retail", "Golf", "Boating"],
+    launchPriority: 11,
+    tagline: "The city of excellence.",
+    shortDescription:
+      "A family-oriented city known for the Aventura Mall, golf courses, and expansive bay views.",
+    overview:
+      "Aventura is a master-planned suburban city built around the Aventura Mall and the Turnberry Isle golf course. It offers a wide range of residential options, from high-rise bayfront towers to gated country club communities.",
+    image: aventuraImg,
+    imagePosition: "center 52%",
+    visualTone: "resort",
+    signature: "Bayfront Community Towers",
+    buildings: [
+      "Prive at Island Estates",
+      "Williams Island",
+      "Echo Aventura",
+      "Porto Vita",
+      "Hidden Bay",
+      "The Reserve at Marina Palms",
+      "Peninsula",
+      "Hamptons South",
+      "Bella Mare",
+      "One Island Institute",
+    ],
+  },
+  {
+    slug: "edgewater",
+    name: "Edgewater",
+    aliases: ["East Edgewater", "Biscayne Corridor"],
+    regionGroup: "Central Core",
+    areaType: "Modern bayfront corridor",
+    propertyType: "condo",
+    lifestyleTags: ["Bayfront", "Urban", "Investor", "New Development"],
+    launchPriority: 3,
+    tagline: "Miami's bayfront backyard.",
+    shortDescription:
+      "A rapidly growing bayfront neighborhood with modern towers and easy access to the arts district.",
+    overview:
+      "Edgewater has transformed into a wall of modern glass towers overlooking Biscayne Bay. It is one of Miami's most dense and energetic residential corridors, popular with young professionals and international investors seeking modern amenities.",
+    image: edgewater,
+    imagePosition: "center 55%",
+    portraitImagePosition: "center 45%",
+    visualTone: "urban",
+    signature: "Modern Bayfront Towers",
+    buildings: [
+      "Missoni Baia",
+      "Elysee Miami",
+      "Biscayne Beach",
+      "Paraiso District",
+      "One Paraiso",
+      "Gran Paraiso",
+      "Paraiso Bay",
+      "Paraiso Bayviews",
+      "Aria on the Bay",
+      "Icon Bay",
+      "Quantum on the Bay",
+      "Star Lofts",
+    ],
+  },
+  {
+    slug: "design-district",
+    name: "Design District",
+    aliases: ["Miami Design District", "MDD", "Buena Vista"],
+    regionGroup: "Central Core",
+    areaType: "Luxury retail and arts",
+    propertyType: "mixed",
+    lifestyleTags: ["Retail", "Arts", "Design", "Walkable"],
+    launchPriority: 4,
+    tagline: "Art, architecture, and luxury.",
+    shortDescription:
+      "Miami's global destination for high fashion, public art, and avant-garde architecture.",
+    overview:
+      "The Design District is a world-renowned destination for luxury retail, fine dining, and architectural significance. While primarily commercial, it is surrounded by the historic Buena Vista neighborhood and new residential enclaves.",
+    image: designDistrict,
+    imagePosition: "center 52%",
+    portraitImagePosition: "center 48%",
+    visualTone: "retail",
+    signature: "Curated Design Enclaves",
+    buildings: [
+      "Aura Design District",
+      "Sweetbird Residences",
+      "Quadro",
+      "Buena Vista Residences",
+    ],
+  },
+  {
+    slug: "midtown",
+    name: "Midtown",
+    aliases: ["Midtown Miami", "Wynwood-adjacent"],
+    regionGroup: "Central Core",
+    areaType: "Urban walkable district",
+    propertyType: "condo",
+    lifestyleTags: ["Urban", "Walkable", "Retail", "Pet-Friendly"],
+    launchPriority: 8,
+    tagline: "City living made easy.",
+    shortDescription:
+      "A walkable, pet-friendly urban neighborhood with industrial-chic lofts and outdoor shops.",
+    overview:
+      "Midtown is modeled after New York's SOHO, offering a pedestrian-friendly grid of shops, restaurants, and residential lofts. It serves as the connective tissue between the Design District and Wynwood.",
+    image: midtown,
+    imagePosition: "center 48%",
+    portraitImagePosition: "center 50%",
+    visualTone: "retail",
+    signature: "Urban Loft Residences",
+    buildings: [
+      "Midtown 2",
+      "Midtown 4",
+      "Midtown 5",
+      "Midtown 6",
+      "Midblock",
+      "Hyde Midtown",
+      "Yard 8",
+    ],
+  },
+  {
+    slug: "brickell",
+    name: "Brickell",
+    aliases: ["Financial District", "Downtown Brickell", "Mary Brickell Village", "Brickel"],
+    regionGroup: "Central Core",
+    areaType: "High-density financial center",
+    propertyType: "condo",
+    lifestyleTags: ["Urban", "Business", "Walkable", "Nightlife"],
+    launchPriority: 6,
+    tagline: "The Manhattan of the South.",
+    shortDescription:
+      "Miami's dense financial core, known for its skyline, nightlife, and walkable lifestyle.",
+    overview:
+      "Brickell is the most densely populated neighborhood in Miami. As the city's financial hub, it features an ever-growing forest of residential and office towers, high-end retail at Brickell City Centre, and a massive selection of dining.",
+    image: brickell,
+    imagePosition: "center 46%",
+    portraitImagePosition: "center 48%",
+    visualTone: "urban",
+    signature: "Dense Urban Towers",
+    buildings: [
+      "Brickell City Centre",
+      "Reach & Rise",
+      "SLS Brickell",
+      "SLS Lux",
+      "Echo Brickell",
+      "Four Seasons Brickell",
+      "Santa Maria",
+      "Bristol Tower",
+      "Jade at Brickell Bay",
+      "Brickell Flatiron",
+      "Una Residences",
+      "Baccarat Residences",
+      "Cipriani Residences",
+    ],
+  },
+  {
+    slug: "brickell-key",
+    name: "Brickell Key",
+    aliases: ["Claughton Island"],
+    regionGroup: "Central Core",
+    areaType: "Private gated island",
+    propertyType: "condo",
+    lifestyleTags: ["Quiet Luxury", "Island", "Private", "Walkable"],
+    launchPriority: 12,
+    tagline: "An island apart, in the heart of the city.",
+    shortDescription:
+      "A gated island at the mouth of the Miami River, offering privacy and city views.",
+    overview:
+      "Brickell Key is a man-made island accessible by a short bridge from Brickell. It offers a quiet, highly manicured environment with a one-mile perimeter walking path and some of Miami's most established luxury towers.",
+    image: brickellKey,
+    imagePosition: "center 52%",
+    visualTone: "island",
+    signature: "Private Island Towers",
+    buildings: [
+      "Asia",
+      "Carbonell",
+      "Tequesta I",
+      "Tequesta II",
+      "Tequesta III",
+      "One Tequesta Point",
+      "Two Tequesta Point",
+      "Three Tequesta Point",
+      "Mandarin Oriental Residences",
+    ],
+  },
+  {
+    slug: "downtown-miami",
+    name: "Downtown Miami",
+    aliases: ["Downtown", "Central Business District", "Park West"],
+    regionGroup: "Central Core",
+    areaType: "Historic and cultural core",
+    propertyType: "condo",
+    lifestyleTags: ["Urban", "Culture", "Transit", "Parks"],
+    launchPriority: 9,
+    tagline: "The heart of the new Miami.",
+    shortDescription:
+      "The historic core undergoing a massive residential and cultural renaissance.",
+    overview:
+      "Downtown Miami is the city's historic center, now home to major cultural institutions like the PAMM and Frost Museum. Projects like Miami Worldcenter are currently redefining the neighborhood into a residential powerhouse.",
+    image: downtownMiami,
+    imagePosition: "center 52%",
+    portraitImagePosition: "center 46%",
+    visualTone: "urban",
+    signature: "Signature Landmark Towers",
+    buildings: [
+      "One Thousand Museum",
+      "Aston Martin Residences",
+      "Epic Residences",
+      "Marquis",
+      "Ten Museum Park",
+      "900 Biscayne Bay",
+      "Marina Blue",
+      "Vizcayne",
+      "Waldorf Astoria Residences",
+    ],
+  },
+  {
+    slug: "south-of-fifth",
+    name: "South of Fifth",
+    aliases: ["SoFi", "South Pointe"],
+    regionGroup: "Miami Beach",
+    areaType: "Ultra-luxury residential enclave",
+    propertyType: "condo",
+    lifestyleTags: ["Oceanfront", "Quiet Luxury", "Dining", "Parks"],
+    launchPriority: 7,
+    tagline: "The most exclusive tip of the beach.",
+    shortDescription:
+      "A quiet, elite neighborhood at the southern end of Miami Beach with world-class dining.",
+    overview:
+      "South of Fifth is widely considered the most prestigious neighborhood on Miami Beach. Surrounded by water on three sides and anchored by South Pointe Park, it offers a quieter, more refined pace than the rest of South Beach.",
+    image: southOfFifth,
+    imagePosition: "center 50%",
+    portraitImagePosition: "center 48%",
+    visualTone: "coastal",
+    signature: "Elite Waterfront Enclaves",
+    buildings: [
+      "Continuum North",
+      "Continuum South",
+      "Apogee",
+      "Murano at Portofino",
+      "Murano Grande",
+      "Icon South Beach",
+      "Portofino Tower",
+      "300 Collins",
+      "Glass",
+      "One Ocean",
+    ],
+  },
+  {
+    slug: "coconut-grove",
+    name: "Coconut Grove",
+    aliases: ["The Grove"],
+    regionGroup: "Coral Gables / Grove",
+    areaType: "Lush historic bayside",
+    propertyType: "mixed",
+    lifestyleTags: ["Bayfront", "Historic", "Lush", "Walkable"],
+    launchPriority: 14,
+    tagline: "Miami's oldest, greenest neighborhood.",
+    shortDescription:
+      "A lush, bayside escape with a bohemian history and a sophisticated residential core.",
+    overview:
+      "Coconut Grove is defined by its dense canopy of oaks and palms, historic architecture, and relaxed bayside vibe. It is one of Miami's most walkable and family-friendly neighborhoods, with a high concentration of private schools and marinas.",
+    image: coconutGrove,
+    imagePosition: "center 54%",
+    portraitImagePosition: "center 50%",
+    visualTone: "garden",
+    signature: "Signature Bayside Residences",
+    buildings: [
+      "Park Grove",
+      "Grove at Grand Bay",
+      "Mr. C Residences",
+      "GlassHaus in the Grove",
+      "Arbor Residences",
+      "THE WELL Coconut Grove",
+      "L'Hermitage",
+      "Yacht Harbour",
+      "Mutiny Park",
+      "Ritz-Carlton Coconut Grove",
+      "Vita at Grove Isle",
+      "Four Seasons Residences The Grove",
+    ],
+  },
+  {
+    slug: "key-biscayne",
+    name: "Key Biscayne",
+    aliases: ["KB", "Crandon", "Ocean Club", "Key Biscayne Miami"],
+    regionGroup: "Island & Key Corridors",
+    areaType: "Island lifestyle",
+    propertyType: "mixed",
+    lifestyleTags: ["Oceanfront", "Bayfront", "Quiet Luxury", "Long-Term"],
+    launchPriority: 13,
+    tagline: "Island living with parks, beach clubs, and long-term appeal.",
+    shortDescription:
+      "A quieter island market with oceanfront residences, club communities, and a more residential pace.",
+    overview:
+      "Key Biscayne is a self-contained island market framed by Crandon Park, Bill Baggs Cape Florida State Park, beaches, marinas, and established residential communities. For AURA, it reads as an island lifestyle page: quieter, longer-term, and more private than the central condo corridors.",
+    image: keyBiscayne,
+    imagePosition: "center 54%",
+    portraitImagePosition: "center 48%",
+    visualTone: "coastal",
+    signature: "Island Lifestyle Residences",
+    buildings: [
+      "Oceana Key Biscayne",
+      "Grand Bay Residences",
+      "Ocean Club",
+      "Lake Tower",
+      "Ocean Tower",
+      "Club Tower",
+      "Botanica",
+      "Tidemark",
+      "Emerald Bay",
+      "Towers of Key Biscayne",
+      "Key Colony",
+      "Ritz-Carlton Key Biscayne",
+      "Sands of Key Biscayne",
+      "Casa del Mar",
+      "Mar Azul",
+    ],
+  },
+  {
+    slug: "indian-creek",
+    name: "Indian Creek",
+    regionGroup: "Island & Key Corridors",
+    areaType: "Private Island",
+    propertyType: "estate",
+    lifestyleTags: ["Quiet Luxury", "Private Island"],
+    tagline: "The world's most exclusive island.",
+    shortDescription: "A private island enclave.",
+    overview: "Indian Creek is one of the most private residential concentrations in the world.",
+    image: indianCreek,
+    imagePosition: "center 50%",
+    visualTone: "estate",
+    signature: "Private Island Estates",
+    buildings: ["Indian Creek Estate"],
+  },
+  {
+    slug: "coral-gables",
+    name: "Coral Gables",
+    regionGroup: "Coral Gables / Grove",
+    areaType: "Historic Estates",
+    propertyType: "estate",
+    lifestyleTags: ["Historic", "Quiet Luxury"],
+    tagline: "The City Beautiful.",
+    shortDescription: "Classical Mediterranean estates.",
+    overview: "Coral Gables is defined by historic architecture and lush canopy streets.",
+    image: coralGables,
+    imagePosition: "center 55%",
+    portraitImagePosition: "center 52%",
+    visualTone: "garden",
+    signature: "Signature Waterfront Estates",
+    buildings: ["Gables Estates Waterfront"],
+  },
+];
+
+export const getAreaBySlug = (slug: string) =>
+  AREAS.find((a) => a.slug === slug);
