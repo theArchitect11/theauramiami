@@ -301,11 +301,11 @@ const ExplorePage = () => {
         </div>
       </section>
 
-      <section className="relative z-20 border-b border-primary/15 bg-background/94 backdrop-blur-md">
+      <section className="relative z-20 border-b border-primary/20 bg-background/70 shadow-[0_20px_70px_-54px_hsl(190_44%_14%/0.75)] backdrop-blur-2xl backdrop-saturate-150">
         <div className="mx-auto w-full max-w-7xl px-5 py-5 sm:px-6">
-          <div className="grid gap-5 border border-primary/18 bg-card/72 p-4 shadow-[0_28px_72px_-58px_hsl(190_44%_14%/0.6)] md:p-5">
+          <div className="grid gap-5 border border-primary/20 bg-card/45 p-4 shadow-[0_28px_72px_-58px_hsl(190_44%_14%/0.78)] backdrop-blur-2xl md:p-5">
             <div className="flex min-w-0 flex-col gap-4 lg:grid lg:grid-cols-[auto_minmax(0,38rem)] lg:items-center lg:justify-between">
-              <div className="inline-grid w-fit max-w-full grid-cols-3 gap-1 rounded-full border border-primary/15 bg-background/45 p-1">
+              <div className="inline-grid w-fit max-w-full grid-cols-3 gap-1 rounded-full border border-primary/20 bg-background/30 p-1 shadow-[inset_0_1px_0_hsl(var(--gold)/0.12)] backdrop-blur-xl">
                 {intents.map((item) => (
                   <button
                     key={item.value}
@@ -322,7 +322,7 @@ const ExplorePage = () => {
                 ))}
               </div>
 
-              <div className="flex min-w-0 w-full max-w-[38rem] items-center gap-3 rounded-full border border-primary/25 bg-input/75 px-4 py-3 shadow-[inset_0_1px_0_hsl(var(--gold)/0.16)]">
+              <div className="flex min-w-0 w-full max-w-[38rem] items-center gap-3 rounded-full border border-primary/25 bg-input/45 px-4 py-3 shadow-[inset_0_1px_0_hsl(var(--gold)/0.16)] backdrop-blur-xl">
                 <Search className="h-4 w-4 shrink-0 text-primary/80" strokeWidth={1.5} />
                 <input
                   value={query}

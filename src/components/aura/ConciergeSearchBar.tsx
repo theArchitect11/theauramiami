@@ -143,8 +143,8 @@ const ConciergeSearchBar = ({ visible = true, placement = "floating" }: Concierg
     <div
       className={
         placement === "inline"
-          ? "relative z-20 border-y border-primary/15 bg-background/92 backdrop-blur-xl shadow-elegant"
-          : `absolute left-0 right-0 top-full border-b border-primary/15 bg-background/92 backdrop-blur-xl shadow-elegant transition-all duration-500 ${
+          ? "relative z-20 border-y border-primary/20 bg-background/70 shadow-[0_22px_70px_-46px_hsl(var(--gold)/0.5)] backdrop-blur-2xl backdrop-saturate-150"
+          : `absolute left-0 right-0 top-full border-b border-primary/20 bg-background/70 shadow-[0_22px_70px_-46px_hsl(var(--gold)/0.5)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 ${
               visible
                 ? "translate-y-0 opacity-100 pointer-events-auto"
                 : "-translate-y-3 opacity-0 pointer-events-none"
@@ -153,7 +153,7 @@ const ConciergeSearchBar = ({ visible = true, placement = "floating" }: Concierg
     >
       <div className="container mx-auto px-4 sm:px-6 py-3">
         <div className="mx-auto flex max-w-5xl flex-col gap-2 sm:flex-row sm:items-center">
-          <div className="grid grid-cols-3 gap-1 rounded-full border border-primary/15 bg-background/45 p-1">
+          <div className="grid grid-cols-3 gap-1 rounded-full border border-primary/20 bg-background/30 p-1 shadow-[inset_0_1px_0_hsl(var(--gold)/0.12)] backdrop-blur-xl">
             {intentOptions.map(({ label, intent: optionIntent, Icon }) => {
               const isActive = intent === optionIntent;
               return (
@@ -175,7 +175,7 @@ const ConciergeSearchBar = ({ visible = true, placement = "floating" }: Concierg
           </div>
 
           <div className="relative min-w-0 flex-1">
-            <div className="flex items-center gap-3 rounded-full border border-primary/15 bg-input/55 px-4 py-2.5 focus-within:border-primary/60 transition-colors">
+            <div className="flex items-center gap-3 rounded-full border border-primary/20 bg-input/40 px-4 py-2.5 shadow-[inset_0_1px_0_hsl(var(--gold)/0.1)] backdrop-blur-xl transition-colors focus-within:border-primary/60">
               {isSearching ? (
                 <Loader2 className="h-4 w-4 shrink-0 text-primary animate-spin" />
               ) : (

@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 border-b border-primary/45 bg-[linear-gradient(135deg,rgba(7,47,54,0.96),rgba(4,30,36,0.92))] shadow-[0_18px_60px_-36px_hsl(var(--gold)/0.45)] backdrop-blur-md transition-all duration-500 ${
+      className={`fixed left-0 right-0 top-0 z-50 border-b border-primary/35 bg-[linear-gradient(135deg,rgba(7,47,54,0.76),rgba(4,30,36,0.62))] shadow-[0_18px_70px_-38px_hsl(var(--gold)/0.55)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 ${
         scrolled ? "py-3" : "py-4 md:py-5"
       }`}
     >
@@ -100,8 +100,8 @@ const Navbar = () => {
             aria-expanded={searchOpen}
             className={`inline-flex h-11 w-11 items-center justify-center border transition-all duration-300 ${
               searchOpen
-                ? "border-primary bg-primary/15 text-primary"
-                : "border-primary/30 bg-transparent text-foreground/70 hover:border-primary/60 hover:text-primary"
+                ? "border-primary bg-primary/20 text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-xl"
+                : "border-primary/30 bg-background/20 text-foreground/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl hover:border-primary/60 hover:text-primary"
             }`}
           >
             {searchOpen ? (
@@ -122,7 +122,7 @@ const Navbar = () => {
               setMobileOpen((open) => !open);
               setSearchOpen(false);
             }}
-            className="flex h-11 w-11 items-center justify-center border border-primary/55 bg-background/55 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-colors hover:border-primary/75 hover:text-primary lg:hidden"
+            className="flex h-11 w-11 items-center justify-center border border-primary/55 bg-background/30 text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl transition-colors hover:border-primary/75 hover:text-primary lg:hidden"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
@@ -137,7 +137,7 @@ const Navbar = () => {
       {mobileOpen && (
         <div
           id="mobile-navigation"
-          className="absolute left-0 right-0 top-full border-y border-primary/25 bg-[linear-gradient(135deg,rgba(7,47,54,0.98),rgba(4,30,36,0.96))] px-5 py-4 shadow-[0_28px_80px_-36px_hsl(var(--gold)/0.55)] lg:hidden"
+          className="absolute left-0 right-0 top-full border-y border-primary/25 bg-[linear-gradient(135deg,rgba(7,47,54,0.82),rgba(4,30,36,0.72))] px-5 py-4 shadow-[0_28px_80px_-36px_hsl(var(--gold)/0.55)] backdrop-blur-2xl backdrop-saturate-150 lg:hidden"
         >
           <div className="mx-auto flex max-w-md flex-col divide-y divide-primary/12 text-xs uppercase tracking-[0.18em] text-foreground/90">
             {[...primaryLinks, { label: "Contact", to: "/contact" }].map((item) => (
