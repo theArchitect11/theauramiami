@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import {
   ArrowLeft,
@@ -43,52 +43,10 @@ const fillBuildings = (primary: string[], fallback: string[], limit = 4) => {
   return merged.slice(0, limit);
 };
 
-type AreaMapPin = {
-  name: string;
-  slug: string;
-  left: number;
-  top: number;
-};
-
-const hashFromText = (value: string) => {
-  let result = 0;
-  for (let i = 0; i < value.length; i += 1) {
-    result = (result * 31 + value.charCodeAt(i)) % 10000;
-  }
-  return result;
-};
-
-const buildAreaMapPins = (items: { name: string; slug: string | undefined }[]): AreaMapPin[] =>
-  items
-    .filter((item) => item.slug)
-    .slice(0, 8)
-    .map((item) => {
-      const seed = hashFromText(item.name);
-      const left = 12 + ((seed * 31) % 72);
-      const top = 18 + ((seed * 17) % 62);
-
-      return {
-        name: item.name,
-        slug: item.slug as string,
-        left,
-        top,
-      };
-    });
-
 const AreaPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const location = useLocation();
   const area = slug ? getAreaBySlug(slug) : undefined;
-  const areaPins = useMemo(() => {
-    if (!area) return [];
-
-    const normalizedBuildings = area.buildings.map((name) => {
-      const match = BUILDINGS.find((building) => name.toLowerCase().includes(building.name.toLowerCase()));
-      return { name, slug: match?.slug };
-    });
-
-    return buildAreaMapPins(normalizedBuildings);
-  }, [area]);
 
   useEffect(() => {
     if (!area) return;
@@ -327,7 +285,7 @@ const AreaPage = () => {
   ];
 
   return (
-    <main className="editorial-page editorial-area-page min-h-screen bg-background animate-fade-in">
+    <main className="editorial-page editorial-area-page min-h-screen bg-background">
       <Navbar />
 
       {/* Hero */}
@@ -427,97 +385,80 @@ const AreaPage = () => {
         </div>
       </section>
 
-      {/* Area map */}
+      {/* Area intelligence */}
       <section className="py-16 md:py-24 border-t border-primary/10">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div>
-              <p className="eyebrow mb-4">AURA Map</p>
-              <h2 className="serif text-3xl md:text-5xl leading-[1.05]">
-                Choose your path in{" "}
-                <span className="italic text-primary">{area.name}</span>.
+          <div className="grid gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:items-start">
+            <aside className="xl:sticky xl:top-28">
+              <p className="eyebrow mb-4">Area Intelligence</p>
+              <h2 className="serif max-w-xl text-4xl leading-[1.04] md:text-6xl">
+                Read {area.name} by{" "}
+                <span className="italic text-primary">layer</span>.
               </h2>
-            </div>
-            <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed font-light max-w-xl">
-              A map-style view of the area: signature buildings, quieter options,
-              new development, and the direct path for buy, rent, or sell.
-            </p>
-          </div>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground font-light">
+                A cleaner path than a generic map: first understand the area
+                character, then select the right building, residence type, and
+                private next step.
+              </p>
 
-          <div className="grid xl:grid-cols-[1.3fr_1fr] gap-4 md:gap-5">
-            <article className="relative min-h-[340px] overflow-hidden border border-primary/12 bg-card/70">
-              <img
-                src={area.image}
-                alt={`${area.name} map view`}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 h-full w-full object-cover brightness-[0.9]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-background/35 to-background/10" />
-              <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,transparent_0%,hsl(var(--gold)/0.06)_1px,transparent_3px),linear-gradient(to_bottom,transparent_0%,hsl(var(--gold)/0.05)_1px,transparent_3px)] [background-size:58px_58px]" />
-
-              <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-0 right-0 top-1/2 h-px bg-primary/20" />
-                <div className="absolute top-0 bottom-0 left-1/3 w-px bg-primary/15" />
-                <div className="absolute top-0 bottom-0 right-1/3 w-px bg-primary/15" />
-              </div>
-
-              {areaPins.length > 0 && (
-                <div className="absolute inset-0">
-                  {areaPins.map((pin, index) => (
-                    <Link
-                      key={`${pin.slug}-${pin.name}`}
-                      to={`/building/${pin.slug}?intent=${isLease ? "lease" : "buy"}`}
-                      className="absolute z-10 flex items-center gap-2 max-w-[58%] rounded-full border border-primary/35 bg-background/75 px-2.5 py-1 text-[9px] uppercase tracking-[0.16em] text-foreground transition hover:border-primary hover:bg-background/95 hover:text-primary"
-                      style={{ left: `${pin.left}%`, top: `${pin.top}%` }}
-                    >
-                      <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border border-primary bg-primary text-primary-foreground text-[10px] font-medium">
-                        {index + 1}
-                      </span>
-                      <span className="truncate">{pin.name}</span>
-                    </Link>
+              <div className="relative mt-9 aspect-[5/4] overflow-hidden border border-primary/18 bg-card/70 shadow-[0_28px_90px_-62px_hsl(190_44%_14%/0.7)]">
+                <img
+                  src={area.image}
+                  alt={`${area.name} coastal context`}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover brightness-[0.96] saturate-[0.88] contrast-[1.02]"
+                  style={{ objectPosition: area.imagePosition ?? "center" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/86 via-background/18 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,hsl(var(--gold)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--gold)/0.08)_1px,transparent_1px)] [background-size:92px_92px]" />
+                <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 border-t border-primary/18 bg-background/78 backdrop-blur-sm">
+                  {[
+                    ["Layer", area.regionGroup || "Miami"],
+                    ["Index", `${area.buildings.length} addresses`],
+                    ["Mode", pageMode],
+                  ].map(([label, value]) => (
+                    <div key={label} className="border-r border-primary/14 px-4 py-4 last:border-r-0">
+                      <p className="text-[8px] uppercase tracking-[0.24em] text-primary/70">
+                        {label}
+                      </p>
+                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-foreground/80">
+                        {value}
+                      </p>
+                    </div>
                   ))}
                 </div>
-              )}
-
-              <div className="absolute left-0 right-0 bottom-0 border-t border-primary/20 bg-background/70 px-5 py-5 md:px-6">
-                <p className="text-[9px] uppercase tracking-[0.24em] text-primary/80 mb-2">
-                  AURA map for {area.name}
-                </p>
-                <p className="text-xs md:text-sm text-muted-foreground/90 leading-relaxed">
-                  Click the pins for a dossier path to buildings directly from the map.
-                </p>
               </div>
-            </article>
+            </aside>
 
-            <div className="grid md:grid-cols-2 xl:grid-cols-1 gap-3 sm:gap-4">
+            <div className="grid gap-3 md:grid-cols-2">
               {dossierCards.map((card) => {
                 const Icon = card.icon;
                 return (
                   <article
                     key={card.title}
-                    className="bg-background p-5 md:p-7 h-full min-h-[220px] md:min-h-[225px] flex flex-col group hover:bg-secondary/35 transition-colors duration-500"
+                    className="group flex min-h-[260px] flex-col border border-primary/14 bg-background p-5 transition-colors duration-500 hover:bg-secondary/35 md:p-6"
                   >
-                    <div className="flex items-start justify-between gap-4 mb-6">
+                    <div className="mb-5 flex items-start justify-between gap-4">
                       <div>
-                        <p className="text-[9px] uppercase tracking-[0.28em] text-primary/75 mb-3">
+                        <p className="mb-3 text-[9px] uppercase tracking-[0.28em] text-primary/75">
                           {card.eyebrow}
                         </p>
-                        <h3 className="serif text-2xl leading-tight">
+                        <h3 className="serif text-2xl leading-tight text-foreground">
                           {card.title}
                         </h3>
                       </div>
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/8 text-primary">
-                        <Icon className="h-5 w-5" strokeWidth={1.5} />
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/24 bg-primary/8 text-primary">
+                        <Icon className="h-4 w-4" strokeWidth={1.5} />
                       </span>
                     </div>
 
-                    <p className="text-sm leading-relaxed text-muted-foreground font-light mb-6">
+                    <p className="mb-5 text-sm leading-relaxed text-muted-foreground font-light">
                       {card.body}
                     </p>
 
-                    <div className="space-y-2 mb-7">
-                      {card.buildings.map((building) => (
+                    <div className="mb-6 space-y-2">
+                      {card.buildings.slice(0, 3).map((building) => (
                         <div
                           key={`${card.title}-${building}`}
                           className="flex items-center justify-between gap-4 border-b border-primary/10 pb-2 last:border-b-0"
