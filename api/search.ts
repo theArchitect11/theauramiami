@@ -1,18 +1,36 @@
 import { neon } from "@neondatabase/serverless";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
+type QueryValue = string | string[] | undefined;
+
+const firstQueryValue = (value: QueryValue) => (Array.isArray(value) ? value[0] : value);
+
+const parsePositiveInt = (value: QueryValue) => {
+  const parsed = Number.parseInt(firstQueryValue(value) ?? "", 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+};
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
   if (req.method === "OPTIONS") return res.status(200).end();
 
   try {
+    if (!process.env.DATABASE_URL) {
+      return res.status(500).json({ error: "Database is not configured" });
+    }
+
     const sql = neon(process.env.DATABASE_URL!);
 
     const { q = "", type, max_price, min_beds, limit = "20" } = req.query;
-    const query = String(q).trim();
+    const query = (firstQueryValue(q) ?? "").trim();
+    const listingType = firstQueryValue(type);
+    const maxPrice = parsePositiveInt(max_price);
+    const minBeds = parsePositiveInt(min_beds);
+    const limitValue = Math.min(parsePositiveInt(limit) ?? 20, 50);
 
-    const results = await sql(`
+    const results = await sql.query(
+      `
       SELECT
         l.id,
         l.listing_type,
@@ -48,13 +66,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         AND ($4::integer IS NULL OR l.bedrooms >= $4)
       ORDER BY l.created_at DESC
       LIMIT $5
-    `, [
-      query,
-      type || null,
-      max_price ? parseInt(max_price as string) : null,
-      min_beds ? parseInt(min_beds as string) : null,
-      parseInt(limit as string),
-    ]);
+    `,
+      [
+        query,
+        listingType === "sale" || listingType === "rent" ? listingType : null,
+        maxPrice,
+        minBeds,
+        limitValue,
+      ],
+    );
 
     return res.status(200).json(results);
   } catch (err) {

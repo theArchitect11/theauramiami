@@ -1,25 +1,62 @@
 import { neon } from "@neondatabase/serverless";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
+type QueryValue = string | string[] | undefined;
+
+const firstQueryValue = (value: QueryValue) => (Array.isArray(value) ? value[0] : value);
+
+const parsePositiveInt = (value: QueryValue) => {
+  const parsed = Number.parseInt(firstQueryValue(value) ?? "", 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+};
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
   if (req.method === "OPTIONS") return res.status(200).end();
 
   try {
+    if (!process.env.DATABASE_URL) {
+      return res.status(500).json({ error: "Database is not configured" });
+    }
+
     const sql = neon(process.env.DATABASE_URL!);
 
     const { type, neighborhood, min_beds, max_price, limit = "12" } = req.query;
 
+    const params: Array<string | number> = [];
     const conditions = ["status = 'Active'"];
-    if (type) conditions.push(`listing_type = '${type}'`);
-    if (neighborhood) conditions.push(`neighborhood ILIKE '%${neighborhood}%'`);
-    if (min_beds) conditions.push(`bedrooms >= ${parseInt(min_beds as string)}`);
-    if (max_price) conditions.push(`price <= ${parseInt(max_price as string)}`);
+    const listingType = firstQueryValue(type);
+    const neighborhoodValue = firstQueryValue(neighborhood);
+    const minBeds = parsePositiveInt(min_beds);
+    const maxPrice = parsePositiveInt(max_price);
+    const limitValue = Math.min(parsePositiveInt(limit) ?? 12, 50);
+
+    if (listingType === "sale" || listingType === "rent") {
+      params.push(listingType);
+      conditions.push(`listing_type = $${params.length}`);
+    }
+
+    if (neighborhoodValue) {
+      params.push(`%${neighborhoodValue}%`);
+      conditions.push(`neighborhood ILIKE $${params.length}`);
+    }
+
+    if (minBeds) {
+      params.push(minBeds);
+      conditions.push(`bedrooms >= $${params.length}`);
+    }
+
+    if (maxPrice) {
+      params.push(maxPrice);
+      conditions.push(`price <= $${params.length}`);
+    }
 
     const where = conditions.join(" AND ");
+    params.push(limitValue);
 
-    const listings = await sql(`
+    const listings = await sql.query(
+      `
       SELECT
         l.*,
         COALESCE(
@@ -34,8 +71,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       WHERE ${where}
       GROUP BY l.id
       ORDER BY l.created_at DESC
-      LIMIT ${parseInt(limit as string)}
-    `);
+      LIMIT $${params.length}
+    `,
+      params,
+    );
 
     return res.status(200).json(listings);
   } catch (err) {
