@@ -3,12 +3,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
-import ComingSoonPage from "./pages/ComingSoonPage.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import RevealObserver from "./components/aura/RevealObserver.tsx";
 
 const queryClient = new QueryClient();
-const SITE_OFFLINE = true;
 const AboutPage = lazy(() => import("./pages/AboutPage.tsx"));
 const BuildingPage = lazy(() => import("./pages/BuildingPage.tsx"));
 const ContactPage = lazy(() => import("./pages/ContactPage.tsx"));
@@ -52,15 +50,11 @@ const AnimatedRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      {SITE_OFFLINE ? (
-        <ComingSoonPage />
-      ) : (
-        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-          <RevealObserver />
-          <ScrollToTop />
-          <AnimatedRoutes />
-        </BrowserRouter>
-      )}
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <RevealObserver />
+        <ScrollToTop />
+        <AnimatedRoutes />
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
